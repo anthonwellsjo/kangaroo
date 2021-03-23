@@ -1,0 +1,11 @@
+import { Page } from '../framework/framework.js';
+
+export default class ProjectPage extends Page {
+  constructor() {
+    super({ pageTitle: "Project Idea" });
+    this.render = () => `
+    <h1>this is the project page</h1>
+    `;
+
+  }
+}

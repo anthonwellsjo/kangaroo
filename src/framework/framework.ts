@@ -1,3 +1,5 @@
+import { App } from "../app";
+
 interface props {
   pageTitle: string
 }
@@ -9,4 +11,9 @@ export class Page {
     this.pageTitle = pageTitle;
     this.render = () => "";
   }
+}
+
+export const refreshApp = (app: App) => {
+  document.body.innerHTML = app.render();
+  app.addEventListeners();
 }
