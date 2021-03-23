@@ -1,30 +1,32 @@
-class App {
+import { Page } from "./framework/framework.js";
+
+export class App {
+  currentPage: Page | undefined;
+  render: () => string;
   constructor() {
-  }
-
-  render = () => {
-    return `
-    <div id="app">
-      <header>
-        <nav>
-          <button>Affärsplan</button>
-          <button>Projektidé</button>
-          <button>Kontakt</button>
-        </nav>
-      </header>
-      <main id="main"></main>
-      <footer id="footer"></footer>
-    </div>
-    `
+    this.currentPage = undefined;
+    this.render = () => {
+      return `
+      <div id="app">
+        <div id="layout">
+          <header id="header">
+            <nav>
+              <button class="link">Affärsplan</button>
+              <button class="link">Projektidé</button>
+              <button class="link">Kontakt</button>
+            </nav>
+          </header>
+          <main id="main">
+            ${this.currentPage?.render()}
+          </main>
+          <footer id="footer"></footer>
+        </div>
+      </div>
+      `
+    }
   }
 }
 
-const startApp = () => {
-  document.body.innerHTML = `<h1>app working</h1>`;
-  console.log("starting");
-}
 
-
-window.onload = startApp;
 
 

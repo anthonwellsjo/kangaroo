@@ -1,5 +1,5 @@
 {
-  "name": "typesplit",
+  "name": "kangaroo",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,12 +8,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/anthonwellsjo/TypeSplit.git"
+    "url": "git+https://github.com/anthonwellsjo/kangaroo.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/anthonwellsjo/TypeSplit/issues"
+    "url": "https://github.com/anthonwellsjo/kangaroo/issues"
   },
-  "homepage": "https://github.com/anthonwellsjo/TypeSplit#readme"
+  "homepage": "https://github.com/anthonwellsjo/kangaroo#readme"
 }
