@@ -1,4 +1,4 @@
-enum PageName{
+const enum PageName{
   home,
   business,
   project,

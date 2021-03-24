@@ -4,13 +4,6 @@ import ContactPage from "./pages/contact.js";
 import HomePage from "./pages/home.js";
 import ProjectPage from "./pages/project.js";
 
-enum PageName {
-  home,
-  business,
-  project,
-  contact
-}
-
 
 export class App {
   currentPage: Page | undefined;
@@ -55,14 +48,24 @@ export class App {
       })
     }
     this.render = () => {
+      console.log(this.currentPage?.pageName)
       return `
       <div id="app">
         <div id="layout">
         <header id="header">
         <nav id="navbar">
-        <button pageName="${PageName.business}" class="link"><img class="linkIcon" src="src/images/business.png" alt="business page"/></button>
-        <button pageName="${PageName.project}" class="link"><img class="linkIcon" src="src/images/idea.png" alt="business page"/></button>
-        <button pageName="${PageName.contact}" class="link"><img class="linkIcon" src="src/images/contact.png" alt="contact page"/></button>
+        <button pageName="${PageName.business}" class="link ${this.currentPage?.pageName == PageName.business ? "active" : ""}">
+          <img class="linkIcon" src="src/images/business.png" alt="business page"/>
+          <p class="linkLabel">Business Plan</p>
+        </button>
+        <button pageName="${PageName.project}" class="link ${this.currentPage?.pageName == PageName.project ? "active" : ""}">
+          <img class="linkIcon" src="src/images/idea.png" alt="project page"/>
+          <p class="linkLabel">Project Idea</p>
+        </button>
+        <button pageName="${PageName.contact}" class="link ${this.currentPage?.pageName == PageName.contact ? "active" : ""}">
+          <img class="linkIcon" src="src/images/contact.png" alt="contact page"/>
+          <p class="linkLabel">Contact Page</p>
+        </button>
         </nav>
         </header>
         <main id="main">

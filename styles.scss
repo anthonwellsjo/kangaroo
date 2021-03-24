@@ -4,7 +4,6 @@ body {
   padding: 0;
   overflow-x: hidden;
 }
-
 h1 {
   margin: 0;
 }
@@ -55,22 +54,22 @@ h1 {
   transition: all 0.3s;
 }
 
-.link:hover .linkIcon, .link.active .linkIcon {
-  transform: scale(0.5);
-  transform-origin: bottom;
-  opacity: 0.4;
-  transition: all 0.3s;
+.link:hover, .link.active {
+  .linkIcon {
+    transform: scale(0.5);
+    transform-origin: bottom;
+    opacity: .4;
+    transition: all 0.3s;
+  }
+  .linkLabel {
+    transform: translateY(-50px) scale(1);
+    transition: all 0.3s;
+  }
 }
-.link:hover .linkLabel, .link.active .linkLabel {
-  transform: translateY(-50px) scale(1);
-  transition: all 0.3s;
+.link.active{
+  background-color: rgba(238, 238, 238,0.3);
+  transition: all .3s;
 }
-
-.link.active {
-  background-color: rgba(238, 238, 238, 0.3);
-  transition: all 0.3s;
-}
-
 .linkIcon {
   height: 50px;
   width: 50px;
@@ -95,6 +94,7 @@ h1 {
   left: 0;
   width: 100%;
   height: 100%;
+
   z-index: -1;
 }
 
@@ -106,7 +106,6 @@ h1 {
   bottom: 120px;
   background: linear-gradient(90deg, #f0dcca 0%, white 100%);
 }
-
 #bcg2 {
   position: absolute;
   width: 70%;
@@ -115,5 +114,3 @@ h1 {
   bottom: 0;
   background: linear-gradient(90deg, #c4e9ff 0%, white 100%);
 }
-
-/*# sourceMappingURL=styles.css.map */

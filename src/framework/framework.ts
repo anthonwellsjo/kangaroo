@@ -1,14 +1,17 @@
 import { App } from "../app";
 
 interface props {
-  pageTitle: string
+  pageTitle: string,
+  pageName: PageName | null
 }
 
 export class Page {
-  pageTitle: string;
+  pageTitle;
+  pageName;
   render: () => string;
-  constructor({ pageTitle }: props) {
+  constructor({ pageTitle, pageName }: props) {
     this.pageTitle = pageTitle;
+    this.pageName = pageName;
     this.render = () => "";
   }
 }
