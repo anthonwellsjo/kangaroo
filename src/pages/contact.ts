@@ -4,7 +4,7 @@ export default class ContactPage extends Page {
   constructor() {
     super({ pageTitle: "Contact", pageName: PageName.contact });
     this.render = () => `
-    <h1>this is the contact page</h1>
+    <p>this is the contact page</p>
     `;
 
   }

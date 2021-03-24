@@ -54,22 +54,29 @@ export class App {
         <div id="layout">
         <header id="header">
         <nav id="navbar">
-        <button pageName="${PageName.business}" class="link ${this.currentPage?.pageName == PageName.business ? "active" : ""}">
+        <button pageName="${PageName.business}" class="link ${this.currentPage?.pageName == PageName.business ? "activeLink" : "unactiveLink"}">
           <img class="linkIcon" src="src/images/business.png" alt="business page"/>
           <p class="linkLabel">Business Plan</p>
         </button>
-        <button pageName="${PageName.project}" class="link ${this.currentPage?.pageName == PageName.project ? "active" : ""}">
+        <button pageName="${PageName.project}" class="link ${this.currentPage?.pageName == PageName.project ? "activeLink" : "unactiveLink"}">
           <img class="linkIcon" src="src/images/idea.png" alt="project page"/>
           <p class="linkLabel">Project Idea</p>
         </button>
-        <button pageName="${PageName.contact}" class="link ${this.currentPage?.pageName == PageName.contact ? "active" : ""}">
+        <button pageName="${PageName.contact}" class="link ${this.currentPage?.pageName == PageName.contact ? "activeLink" : "unactiveLink"}">
           <img class="linkIcon" src="src/images/contact.png" alt="contact page"/>
           <p class="linkLabel">Contact Page</p>
         </button>
         </nav>
         </header>
         <main id="main">
-        ${this.currentPage?.render()}
+          <div id ="pageContainer">
+          <div id="pageTitle">
+            ${this.currentPage?.pageTitle}
+          </div>
+          <div id="pageContent">
+            ${this.currentPage?.render()}
+          </div>
+         </div>
         </main>
         <footer id="footer"></footer>
         <div id="bcg">
