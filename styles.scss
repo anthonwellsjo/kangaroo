@@ -118,7 +118,10 @@ submit {
 }
 #pageContainer {
   margin-top: 20px;
-  width: 90%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 #pageTitle {
   text-align: center;
@@ -133,9 +136,9 @@ submit {
 }
 #pageContent {
   position: relative;
-  width: 80%;
-
-  text-align: left;
+  width: 90%;
+  text-align: justify;
+  
 }
 
 #footer {
@@ -170,3 +173,4 @@ submit {
   bottom: 0;
   background: linear-gradient(90deg, #c4e9ff 0%, white 100%);
 }
+

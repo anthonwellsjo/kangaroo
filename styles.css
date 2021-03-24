@@ -122,7 +122,10 @@ submit {
 
 #pageContainer {
   margin-top: 20px;
-  width: 90%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
 #pageTitle {
@@ -138,8 +141,8 @@ submit {
 
 #pageContent {
   position: relative;
-  width: 80%;
-  text-align: left;
+  width: 90%;
+  text-align: justify;
 }
 
 #footer {
