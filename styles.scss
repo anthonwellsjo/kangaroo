@@ -95,7 +95,17 @@ span {
   }
 }
 .activeLink {
+  position: relative;
   transition: all 0.3s;
+}
+.activeLink::after {
+  content: "";
+  top:40px;
+  left: 13px;
+  width:40px;
+  height:2px;
+  background-color: rgb(211, 211, 211);
+  position: absolute;
 }
 .linkIcon {
   height: 30px;
