@@ -13,7 +13,14 @@ h3,
 h4,
 p,
 span {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+input,
+button,
+submit {
+  border: none;
+  outline: none;
 }
 
 #app {
@@ -65,11 +72,9 @@ span {
   padding-top: 20px;
 }
 
-
 .link {
   background-color: white;
   border-radius: 10px;
-  border: none;
   height: 50px;
   width: 65px;
   overflow: hidden;
@@ -84,28 +89,18 @@ span {
 
 .unactiveLink:hover {
   .linkIcon {
-    transform: scale(0.5);
+    transform: scale(1.1);
     transform-origin: bottom;
-    opacity: 0.4;
-    transition: all 0.3s;
-  }
-  .linkLabel {
-    transform: translateY(-50px) scale(1);
+
     transition: all 0.3s;
   }
 }
 .activeLink {
-  position: relative;
+  transform: scale(1.1);
+  transform-origin: bottom;
+  margin-top: 2px;
+  opacity: 0.4;
   transition: all 0.3s;
-}
-.activeLink::after {
-  content: "";
-  top:40px;
-  left: 13px;
-  width:40px;
-  height:2px;
-  background-color: rgb(211, 211, 211);
-  position: absolute;
 }
 .linkIcon {
   height: 30px;
@@ -121,13 +116,14 @@ span {
   display: flex;
   justify-content: center;
 }
-#pageContainer{
+#pageContainer {
   margin-top: 20px;
   width: 90%;
 }
 #pageTitle {
   text-align: center;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   color: #e94f37;
   font-size: 1.5em;
   text-transform: lowercase;
@@ -135,10 +131,10 @@ span {
   user-select: none;
   margin-bottom: 50px;
 }
-#pageContent{
+#pageContent {
   position: relative;
   width: 80%;
-  
+
   text-align: left;
 }
 
@@ -150,12 +146,11 @@ span {
 }
 
 #bcg {
-  position: sticky;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-
   z-index: -1;
 }
 

@@ -4,3 +4,7 @@ const enum PageName{
   project,
   contact
 }
+
+interface HTMLLinkButton extends HTMLButtonElement{
+  pageName: PageName
+}

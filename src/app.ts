@@ -7,65 +7,35 @@ import ProjectPage from "./pages/project.js";
 
 export class App {
   currentPage: Page | undefined;
+  pages = [new BusinessPage(), new ProjectPage(), new ContactPage()];
   render: () => string;
   addEventListeners: () => void;
   constructor() {
     this.currentPage = new HomePage();
     this.addEventListeners = () => {
-      const buttons = document.getElementsByClassName("link");
+      const buttons = document.getElementsByClassName("link") as HTMLCollectionOf<HTMLLinkButton>;
       Object.keys(buttons).forEach((o) => {
-        const button = buttons[o] as HTMLButtonElement;
-        switch (button.getAttribute("pageName")) {
-          case PageName.business.toString(): {
-            button.addEventListener('click', () => {
-              this.currentPage = new BusinessPage();
-              refreshApp(this);
-            })
-            break;
-          }
-          case PageName.contact.toString(): {
-            button.addEventListener('click', () => {
-              this.currentPage = new ContactPage();
-              refreshApp(this);
-            })
-            break;
-          }
-          case PageName.home.toString(): {
-            button.addEventListener('click', () => {
-              this.currentPage = new HomePage();
-              refreshApp(this);
-            })
-            break;
-          }
-          case PageName.project.toString(): {
-            button.addEventListener('click', () => {
-              this.currentPage = new ProjectPage();
-              refreshApp(this);
-            })
-            break;
-          }
-        }
+        const button = buttons[o] as HTMLLinkButton;
+        button.addEventListener('click', e => {
+          const button = e.currentTarget as HTMLLinkButton;
+          this.currentPage = this.pages.find(p => p.pageName.toString() === button.getAttribute("pageName"));
+          refreshApp(this);
+        })
       })
     }
     this.render = () => {
-      console.log(this.currentPage?.pageName)
       return `
       <div id="app">
         <div id="layout">
         <header id="header">
+
         <nav id="navbar">
-        <button pageName="${PageName.business}" class="link ${this.currentPage?.pageName == PageName.business ? "activeLink" : "unactiveLink"}">
-          <img class="linkIcon" src="src/images/business.png" alt="business page"/>
+        ${this.pages.map(p => `
+        <button pageName="${p.pageName}" class="link ${this.currentPage?.pageName == p.pageName ? "activeLink" : "unactiveLink"}">
+          <img class="linkIcon" src=${p.linkIconAbsolutePath} alt="link to ${p.pageTitle}"/>
           <p class="linkLabel">Business Plan</p>
-        </button>
-        <button pageName="${PageName.project}" class="link ${this.currentPage?.pageName == PageName.project ? "activeLink" : "unactiveLink"}">
-          <img class="linkIcon" src="src/images/idea.png" alt="project page"/>
-          <p class="linkLabel">Project Idea</p>
-        </button>
-        <button pageName="${PageName.contact}" class="link ${this.currentPage?.pageName == PageName.contact ? "activeLink" : "unactiveLink"}">
-          <img class="linkIcon" src="src/images/contact.png" alt="contact page"/>
-          <p class="linkLabel">Contact Page</p>
-        </button>
+        </button>`).join('')}
+  
         </nav>
         </header>
         <main id="main">
@@ -88,12 +58,6 @@ export class App {
         </div>
       </div>
       `
-
-
     }
   }
 }
-
-
-
-
