@@ -115,6 +115,7 @@ submit {
   width: 100%;
   display: flex;
   justify-content: center;
+  transition: all .3s;
 }
 #pageContainer {
   margin-top: 20px;
@@ -138,7 +139,6 @@ submit {
   position: relative;
   width: 90%;
   text-align: justify;
-  
 }
 
 #footer {
@@ -174,3 +174,14 @@ submit {
   background: linear-gradient(90deg, #c4e9ff 0%, white 100%);
 }
 
+.mainAnimationBefore {
+  opacity: 0;
+  transform: translateY(40vw);
+}
+
+
+/*Business*/
+
+#goToAppButton{
+  cursor: pointer;
+}

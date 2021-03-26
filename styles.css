@@ -118,6 +118,7 @@ submit {
   width: 100%;
   display: flex;
   justify-content: center;
+  transition: all 0.3s;
 }
 
 #pageContainer {
@@ -177,6 +178,16 @@ submit {
   left: 0;
   bottom: 0;
   background: linear-gradient(90deg, #c4e9ff 0%, white 100%);
+}
+
+.mainAnimationBefore {
+  opacity: 0;
+  transform: translateY(40vw);
+}
+
+/*Business*/
+#goToAppButton {
+  cursor: pointer;
 }
 
 /*# sourceMappingURL=styles.css.map */

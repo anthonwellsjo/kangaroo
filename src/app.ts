@@ -10,6 +10,7 @@ export class App {
   pages = [new BusinessPage(), new ProjectPage(), new ContactPage()];
   render: () => string;
   addEventListeners: () => void;
+  slideInMain: () => void;
   constructor() {
     this.currentPage = new HomePage();
     this.addEventListeners = () => {
@@ -20,6 +21,11 @@ export class App {
           const button = e.currentTarget as HTMLLinkButton;
           this.currentPage = this.pages.find(p => p.pageName.toString() === button.getAttribute("pageName"));
           refreshApp(this);
+          if (this.currentPage?.addEventListeners) this.currentPage.addEventListeners();
+          history.pushState(this.currentPage?.pageName, this.currentPage?.pageTitle, `/${this.currentPage?.pageTitle}`)
+          setTimeout(() => {
+            this.slideInMain()
+          }, 10);
         })
       })
     }
@@ -38,7 +44,7 @@ export class App {
   
         </nav>
         </header>
-        <main id="main">
+        <main class="mainAnimationBefore" id="main">
           <div id ="pageContainer">
           <div id="pageTitle">
             ${this.currentPage?.pageTitle}
@@ -58,6 +64,9 @@ export class App {
         </div>
       </div>
       `
+    }
+    this.slideInMain = () => {
+      document.getElementById("main")?.classList.remove("mainAnimationBefore");
     }
   }
 }
