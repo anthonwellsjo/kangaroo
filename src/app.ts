@@ -49,21 +49,25 @@ export class App {
           </div>
           <div id="pageContent">
             ${this.currentPage ? this.currentPage.render() : `
-            <a href="/app.html">Link to App.html</a>
+            <div id="emptyPageContainer">
+              <a id="appLink" href="/app.html" data-link-alt="Go for it!"><span>Link to App.html</span></a>
+            </div>
             `}
           </div>
          </div>
          </main>
          <footer id="footer">
-         <div>
-          <p>
-            Anthon Wellsjö
-          </p>
-          </div>
-          <div>
-          <p>
-            Fullstacking around the world
-          </p>
+          <div id="nameContainer">
+            <div class="nCont">
+              <p>
+              Anthon Wellsjö
+              </p>
+            </div>
+            <div class="nCont">
+              <p>
+              YTMWA0 Y0078
+              </p>
+            </div>
           </div>
          </footer>
          <div id="bcg">

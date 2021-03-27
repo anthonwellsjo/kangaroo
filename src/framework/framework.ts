@@ -1,5 +1,4 @@
 import { App } from "../app";
-import mainPage from "../pages/main";
 
 interface props {
   pageTitle: string,
