@@ -50,7 +50,7 @@ export class App {
           <div id="pageContent">
             ${this.currentPage ? this.currentPage.render() : `
             <div id="emptyPageContainer">
-              <a id="appLink" href="/app.html" data-link-alt="Go for it!"><span>Link to App.html</span></a>
+              <a id="appLink" href="/app.html" data-link-alt="Klicka mig!"><span>Link till App.html</span></a>
             </div>
             `}
           </div>
