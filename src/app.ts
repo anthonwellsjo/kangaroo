@@ -35,7 +35,7 @@ export class App {
 
         <nav id="navbar">
         ${this.pages.map(p => `
-        <button pageName="${p.pageName}" class="link ${this.currentPage?.pageName == p.pageName ? "activeLink" : "unactiveLink"}">
+        <button ${this.currentPage?.pageName == p.pageName ? "disabled" : ""} pageName="${p.pageName}" class="link ${this.currentPage?.pageName == p.pageName ? "activeLink" : "unactiveLink"}">
           <img class="linkIcon" src=${p.linkIconAbsolutePath} alt="link to ${p.pageTitle}"/>
           <p class="linkLabel">Business Plan</p>
         </button>`).join('')}
