@@ -111,10 +111,8 @@ submit {
 
 #main {
   position: relative;
-  height: 100%;
-  width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   transition: all .3s;
 }
 #pageContainer {
@@ -142,18 +140,22 @@ submit {
 }
 
 #footer {
+  position: relative;
   bottom: 0;
   left: 0;
   right: 0;
   height: 100px;
+  display: flex;
+  justify-content: end;
+  align-items: flex-end;
 }
 
 #bcg {
   position: absolute;
   top: 0;
+  bottom:0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  right: 0;
   z-index: -1;
 }
 

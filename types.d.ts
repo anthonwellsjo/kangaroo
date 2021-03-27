@@ -1,5 +1,5 @@
 const enum PageName{
-  home,
+  main,
   business,
   project,
   contact

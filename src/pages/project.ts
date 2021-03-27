@@ -2,7 +2,7 @@ import { Page } from '../framework/framework.js';
 
 export default class ProjectPage extends Page {
   constructor() {
-    super({ pageTitle: "Projektidé", pageName: PageName.project, linkIconAbsolutePath: "src/images/idea.png" });
+    super({ pageTitle: "Projektidé", pageName: PageName.project, slug: "#project", linkIconAbsolutePath: "src/images/idea.png" });
     this.render = () => `
     <div style="width: 100%; text-align: center;">
     <img src="src/images/huvud.jpg" alt="barn och förälder" style="height: 150px;"/>

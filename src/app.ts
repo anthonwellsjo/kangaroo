@@ -1,7 +1,6 @@
-import { Page, refreshApp } from "./framework/framework.js";
+import { Page, refreshApp, Router } from "./framework/framework.js";
 import BusinessPage from "./pages/business.js";
 import ContactPage from "./pages/contact.js";
-import HomePage from "./pages/home.js";
 import ProjectPage from "./pages/project.js";
 
 
@@ -12,17 +11,16 @@ export class App {
   addEventListeners: () => void;
   slideInMain: () => void;
   constructor() {
-    this.currentPage = new HomePage();
     this.addEventListeners = () => {
       const buttons = document.getElementsByClassName("link") as HTMLCollectionOf<HTMLLinkButton>;
       Object.keys(buttons).forEach((o) => {
         const button = buttons[o] as HTMLLinkButton;
         button.addEventListener('click', e => {
           const button = e.currentTarget as HTMLLinkButton;
-          this.currentPage = this.pages.find(p => p.pageName.toString() === button.getAttribute("pageName"));
+          const nextPage = this.pages.find(p => p.pageName.toString() === button.getAttribute("pageName")) as Page;
+          Router.routeTo(this, nextPage);
           refreshApp(this);
           if (this.currentPage?.addEventListeners) this.currentPage.addEventListeners();
-          history.pushState(this.currentPage?.pageName, this.currentPage?.pageTitle, `/${this.currentPage?.pageTitle}`)
           setTimeout(() => {
             this.slideInMain()
           }, 10);
@@ -47,21 +45,34 @@ export class App {
         <main class="mainAnimationBefore" id="main">
           <div id ="pageContainer">
           <div id="pageTitle">
-            ${this.currentPage?.pageTitle}
+            ${this.currentPage ? this.currentPage.pageTitle : ""}
           </div>
           <div id="pageContent">
-            ${this.currentPage?.render()}
+            ${this.currentPage ? this.currentPage.render() : `
+            <a href="/app.html">Link to App.html</a>
+            `}
           </div>
          </div>
-        </main>
-        <footer id="footer"></footer>
-        <div id="bcg">
-        <div id="bcg2"/>
-        <div id="bcg1"/>
-          <div id="bcg3"/>
-          <div id="bcg4"/>
-        </div>
-        </div>
+         </main>
+         <footer id="footer">
+         <div>
+          <p>
+            Anthon Wellsjö
+          </p>
+          </div>
+          <div>
+          <p>
+            Fullstacking around the world
+          </p>
+          </div>
+         </footer>
+         <div id="bcg">
+           <div id="bcg2"/>
+           <div id="bcg1"/>
+           <div id="bcg3"/>
+           <div id="bcg4"/>
+         </div>
+         </div>
       </div>
       `
     }
