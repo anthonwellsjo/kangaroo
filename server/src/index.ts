@@ -1,6 +1,7 @@
 
 import { PrismaClient } from '@prisma/client';
 import { ApolloServer } from 'apollo-server-express'
+import { context } from './context'
 import express from 'express';
 import 'reflect-metadata';
 import { buildSchema, Field, ID, ObjectType, Query, Resolver } from 'type-graphql'
@@ -8,8 +9,8 @@ import { buildSchema, Field, ID, ObjectType, Query, Resolver } from 'type-graphq
 @Resolver()
 class getAllUsers {
   @Query(() => [User])
-  async hello() {
-    return "Hello World YIHAAA"
+  async getAllUsers() {
+    return (await context.prisma.user.findMany({ include: { children: true } }));
   }
 }
 
@@ -25,7 +26,7 @@ class User {
   email!: string;
   @Field()
   name!: string;
-  @Field(type => [Child])
+  @Field(type => [Child], { nullable: true })
   children!: [Child]
 }
 
@@ -35,6 +36,12 @@ class Child {
   id!: number;
   @Field()
   createdAt!: string;
+  @Field()
+  updatedAt!: string;
+  @Field()
+  name!: string;
+  @Field()
+  birthDate!: string;
 }
 
 const prisma = new PrismaClient();
