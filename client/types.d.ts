@@ -1,10 +1,13 @@
-const enum PageName{
+const enum PageName {
   main,
   business,
   project,
   contact
 }
 
-interface HTMLLinkButton extends HTMLButtonElement{
+interface HTMLLinkButton extends HTMLButtonElement {
   pageName: PageName
 }
+
+type CompositionColor = "orange" | "blue" | "pink" | "grey";
+

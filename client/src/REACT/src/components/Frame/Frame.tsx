@@ -4,7 +4,8 @@ import CSS from 'csstype';
 const style: CSS.Properties = {
   backgroundColor: "white",
   height: "85%",
-  width: "1200px"
+  width: "1200px",
+  position:"relative"
 }
 
 const Frame: React.FC = ({ children }) => {

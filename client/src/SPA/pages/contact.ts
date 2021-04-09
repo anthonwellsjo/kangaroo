@@ -1,8 +1,9 @@
 import { Page } from '../framework/framework.js';
+import img from "../../../../src/SPA/images/contact.png";
 
 export default class ContactPage extends Page {
   constructor() {
-    super({ pageTitle: "Kontaktuppgifter", pageName: PageName.contact, slug: "#contact", linkIconAbsolutePath: "src/SPA/images/contact.png" });
+    super({ pageTitle: "Kontaktuppgifter", pageName: PageName.contact, slug: "#contact", linkIconAbsolutePath: img });
     this.render = () => `
     <p>Carl Anthon wellsjö</p>
     <p>tel. 3396479127</p>

@@ -1,7 +1,8 @@
 import { Page } from '../framework/framework.js';
+import img from "../../../../src/SPA/images/idea.png";
 export default class ProjectPage extends Page {
     constructor() {
-        super({ pageTitle: "Projektidé", pageName: 2 /* project */, slug: "#project", linkIconAbsolutePath: "src/SPA/images/idea.png" });
+        super({ pageTitle: "Projektidé", pageName: 2 /* project */, slug: "#project", linkIconAbsolutePath: img });
         this.render = () => `
     <div style="width: 100%; text-align: center;">
     <img src="src/SPA/images/huvud.jpg" alt="barn och förälder" style="height: 150px;"/>

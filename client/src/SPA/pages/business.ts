@@ -1,4 +1,5 @@
 import { Page } from '../framework/framework.js';
+import img from "../../../../src/SPA/images/business.png";
 
 const addEventListeners = () => {
   console.log("adding event handlers");
@@ -11,7 +12,7 @@ const addEventListeners = () => {
 
 export default class BusinessPage extends Page {
   constructor() {
-    super({ pageTitle: "Affärsplan", pageName: PageName.business, slug: "#business", linkIconAbsolutePath: "src/SPA/images/business.png", addEventListeners: addEventListeners });
+    super({ pageTitle: "Affärsplan", pageName: PageName.business, slug: "#business", linkIconAbsolutePath: img, addEventListeners: addEventListeners });
     this.render = () => `
     <p>
       En prototyp av produkten kommer att utvecklas innan några investeringar efterfrågas. På så sätt

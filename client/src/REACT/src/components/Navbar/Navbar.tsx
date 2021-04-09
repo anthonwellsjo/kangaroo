@@ -8,18 +8,18 @@ const LinkStyle: CSS.Properties = {
 }
 const navbarStyle: CSS.Properties = {
 position:"absolute",
-right: "300px",
+right: "100px",
 width: "30%",
-top: "90px"
+top: "40px"
 }
 
 const Navbar: React.FC = () => {
   return (
     <div style={navbarStyle}>
       <Spreaderizer>
-        <Link to="/psycho"><p className="navLink" style={LinkStyle}>psycho</p></Link>
-        <Link to="/Baico"><p className="navLink" style={LinkStyle}>Baico</p></Link>
-        <Link to="/Laico"><p className="navLink" style={LinkStyle}>Laico</p></Link>
+        <Link to="/app.html/app"><p className="navLink" style={LinkStyle}>Psycho</p></Link>
+        <Link to="/app.html/Baico"><p className="navLink" style={LinkStyle}>Baico</p></Link>
+        <Link to="/app.html/Laico"><p className="navLink" style={LinkStyle}>Laico</p></Link>
       </Spreaderizer>
     </div>
   )
