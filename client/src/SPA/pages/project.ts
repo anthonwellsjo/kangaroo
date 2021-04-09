@@ -2,10 +2,10 @@ import { Page } from '../framework/framework.js';
 
 export default class ProjectPage extends Page {
   constructor() {
-    super({ pageTitle: "Projektidé", pageName: PageName.project, slug: "#project", linkIconAbsolutePath: "src/images/idea.png" });
+    super({ pageTitle: "Projektidé", pageName: PageName.project, slug: "#project", linkIconAbsolutePath: "src/SPA/images/idea.png" });
     this.render = () => `
     <div style="width: 100%; text-align: center;">
-    <img src="src/images/huvud.jpg" alt="barn och förälder" style="height: 150px;"/>
+    <img src="src/SPA/images/huvud.jpg" alt="barn och förälder" style="height: 150px;"/>
     </div>
     <p>Min produkt är en webbapplikation som samlar all användbar information för 
     föräldrar på en och samma plats, alltid relevant till deras barns ålder, och 

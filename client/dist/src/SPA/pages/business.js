@@ -9,7 +9,7 @@ const addEventListeners = () => {
 };
 export default class BusinessPage extends Page {
     constructor() {
-        super({ pageTitle: "Affärsplan", pageName: 1 /* business */, slug: "#business", linkIconAbsolutePath: "src/images/business.png", addEventListeners: addEventListeners });
+        super({ pageTitle: "Affärsplan", pageName: 1 /* business */, slug: "#business", linkIconAbsolutePath: "src/SPA/images/business.png", addEventListeners: addEventListeners });
         this.render = () => `
     <p>
       En prototyp av produkten kommer att utvecklas innan några investeringar efterfrågas. På så sätt

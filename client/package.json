@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "BUILD-SPA": "tsc",
+    "SPA": "npx live-server"
   },
   "repository": {
     "type": "git",
