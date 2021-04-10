@@ -1,4 +1,5 @@
 */node_modules/
+cms/dist/
 client/dist/
 client/.cache/
 client/.vscode/
