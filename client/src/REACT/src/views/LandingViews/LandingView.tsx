@@ -52,7 +52,6 @@ const LandingView: React.FC = () => {
       </ViewColumn>
       <ViewColumn widthInPercent={25}>
         <ColumnStroke style="grey" />
-
       </ViewColumn>
       <ViewColumn widthInPercent={25}>
         <ColumnStroke style="pink" />
