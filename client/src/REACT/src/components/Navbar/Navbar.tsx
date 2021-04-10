@@ -4,13 +4,13 @@ import Spreaderizer from '../Stucture/Spreaderizer/Spreaderizer';
 import CSS from 'csstype';
 
 const LinkStyle: CSS.Properties = {
-
+letterSpacing:".3em"
 }
 const navbarStyle: CSS.Properties = {
 position:"absolute",
-right: "100px",
+right: "40px",
 width: "30%",
-top: "40px"
+top: "20px"
 }
 
 const Navbar: React.FC = () => {

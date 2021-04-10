@@ -1,17 +1,32 @@
 @import url("https://fonts.googleapis.com/css2?family=Martel:wght@200;300;400;600;700;800;900&display=swap");
-html, body {
+html,
+body {
   margin: 0;
-  background-color: #E5E5E5;
+  background-color: #e5e5e5;
   overflow-x: hidden;
 }
 
-a, a:hover, a:focus, a:active {
+a,
+a:hover,
+a:active {
   text-decoration: none;
   color: inherit;
   font-family: "Martel";
 }
 
-h1, h2, h3, h4, h5, h6, p {
+a:hover {
+  text-decoration: none;
+  color: grey;
+  font-family: "Martel";
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
   font-family: "Martel";
 }
 

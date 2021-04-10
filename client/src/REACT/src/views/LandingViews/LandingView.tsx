@@ -42,7 +42,7 @@ const LandingView: React.FC = () => {
     <ViewLayoutWrapper>
       <ViewColumn widthInPercent={35}>
         <Centralizer>
-          <div style={{ position: "absolute", top: "60px", width: "350px" }}>
+          <div style={{ position: "absolute", top: "20px", width: "350px" }}>
             <Greeting />
             <div style={{ marginTop: "80px" }}>
               <img src="https://picsum.photos/320/250" alt="temp photo" />
