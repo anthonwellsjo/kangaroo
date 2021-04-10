@@ -9,14 +9,17 @@ import ViewColumn from '../../components/Layout/ViewLayout/ViewColumn';
 import ColumnStroke from '../../components/Composition/ColumnStroke';
 import { useQuery } from '@apollo/client';
 import { GENERAL_PREVIEW_ARTICLES } from '../../queries/sanity/sanityQueries';
+import ArticlePreview from './components/articlePreview/ArticlePreview';
+import Columnizer from '../../components/Stucture/Columnizer/Columnizer';
 
 
 const LandingView: React.FC = () => {
 
-  const { loading, error, data } = useQuery(GENERAL_PREVIEW_ARTICLES);
+  const { loading, error, data } = useQuery<GeneralArticlesData>(GENERAL_PREVIEW_ARTICLES);
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :(</p>;
+
   console.log(data);
 
   return (
@@ -33,6 +36,12 @@ const LandingView: React.FC = () => {
       </ViewColumn>
       <ViewColumn widthInPercent={25}>
         <ColumnStroke style="grey" />
+        <Columnizer>
+          {data.allArticle.map(a => {
+            return (<ArticlePreview key={a.slug.current} article={a} />)
+          }
+          )}
+        </Columnizer>
       </ViewColumn>
       <ViewColumn widthInPercent={25}>
         <ColumnStroke style="pink" />

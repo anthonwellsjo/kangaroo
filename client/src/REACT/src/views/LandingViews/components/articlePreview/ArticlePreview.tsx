@@ -1,11 +1,42 @@
 import React from 'react';
+import Columnizer from '../../../../components/Stucture/Columnizer/Columnizer';
+import CSS from 'csstype';
 
-const ArticlePreview: React.FC = () => {
+const titleStyle: CSS.Properties = {
+  fontSize: ".9em",
+  fontWeight: 800,
+  margin: "15px"
+}
+const catStyle: CSS.Properties = {
+  fontSize: ".7em",
+  fontWeight: 600,
+  textAlign: "left",
+  
+}
+const cardStyle: CSS.Properties = {
+  position:"relative",
+  height: "250px",
+  width: "90%",
+  boxShadow:"1px 1px 400px 1px #C4C4C4",
+  margin: "10px auto 10px auto",
+  
+}
+
+interface props {
+  article: Article
+}
+
+
+const ArticlePreview = ({ article }: props) => {
   return (
-<div>
-  <img></img>
-</div>
-)
+    <div style={cardStyle}>
+      <Columnizer>
+        <p style={titleStyle}>{article.title}</p>
+        <img style={{ width: "250px" }} src={article.articleImage.asset.url}></img>
+        <p style={catStyle}>{article.category.map((c, i, a) => `${c.name}${a.length > i + 1 ? ", " : ""}`).join("")}</p>
+      </Columnizer>
+    </div>
+  )
 }
 
 export default ArticlePreview;
