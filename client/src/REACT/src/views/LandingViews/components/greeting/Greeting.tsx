@@ -2,7 +2,7 @@ import React from 'react';
 import CSS from 'csstype';
 
 const h11: CSS.Properties = {
-  fontSize: "3em",
+  fontSize: "3.5em",
   fontWeight: 100,
   marginBottom: "-45px"
 }

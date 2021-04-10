@@ -11,3 +11,5 @@ interface HTMLLinkButton extends HTMLButtonElement {
 
 type CompositionColor = "orange" | "blue" | "pink" | "grey";
 
+type StrokeStyle = "blue" | "pink" | "grey";
+

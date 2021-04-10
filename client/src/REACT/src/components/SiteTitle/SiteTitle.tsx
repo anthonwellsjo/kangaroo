@@ -9,14 +9,15 @@ const style: CSS.Properties = {
 }
 
 const fontStyle: CSS.Properties = {
-  fontWeight: 900,
-  fontSize:"1em"
+  fontWeight: 600,
+  fontSize: ".8em",
+  color: "grey"
 }
 
 const SiteTitle: React.FC = () => {
   return (
     <div style={style}>
-      <h1 style={fontStyle}>Kangaroo</h1>
+      <h1 style={fontStyle}>kangaroo</h1>
     </div>
   )
 }

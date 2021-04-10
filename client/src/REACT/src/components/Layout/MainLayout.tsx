@@ -11,7 +11,7 @@ const style: CSS.Properties = {
   width: "100vw"
 }
 
-const Layout: React.FC = ({ children }) => {
+const MainLayout: React.FC = ({ children }) => {
 
   return (
     <div style={style}>
@@ -29,4 +29,4 @@ const Layout: React.FC = ({ children }) => {
   )
 }
 
-export default Layout;
+export default MainLayout;
