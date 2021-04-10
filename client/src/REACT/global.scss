@@ -32,3 +32,11 @@ p {
   font-weight: 900;
   font-size: 0.85em;
 }
+
+.no-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scroll {
+  -ms-overflow-style: none;
+}

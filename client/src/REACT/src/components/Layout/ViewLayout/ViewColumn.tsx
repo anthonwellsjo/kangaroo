@@ -7,7 +7,7 @@ interface props {
 
 const ViewColumn = ({ children, widthInPercent }: props) => {
   return (
-    <div style={{ position: "relative", left: "5%", width: `${widthInPercent}%`, height: "100%" }}>
+    <div className={"no-scroll"} style={{ position: "relative", left: "5%", width: `${widthInPercent}%`, height: "100%", overflowY: "scroll", overflowX: "visible" }}>
       {children}
     </div>
   )

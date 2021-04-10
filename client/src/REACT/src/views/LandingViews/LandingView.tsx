@@ -35,13 +35,11 @@ const LandingView: React.FC = () => {
         </Centralizer>
       </ViewColumn>
       <ViewColumn widthInPercent={25}>
+        {data.allArticle.map(a => {
+          return (<ArticlePreview key={a.slug.current} article={a} />)
+        }
+        )}
         <ColumnStroke style="grey" />
-        <Columnizer>
-          {data.allArticle.map(a => {
-            return (<ArticlePreview key={a.slug.current} article={a} />)
-          }
-          )}
-        </Columnizer>
       </ViewColumn>
       <ViewColumn widthInPercent={25}>
         <ColumnStroke style="pink" />
