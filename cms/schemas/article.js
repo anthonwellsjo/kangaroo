@@ -37,49 +37,18 @@ export default {
       type: 'number',
     },
     {
-      name: 'popularity',
-      title: 'Popularity',
-      type: 'number',
-    },
-    {
-      name: 'poster',
-      title: 'Poster Image',
+      name: 'articleImage',
+      title: 'Article Image',
       type: 'image',
       options: {
         hotspot: true,
       },
     },
     {
-      name: 'castMembers',
-      title: 'Cast Members',
+      name: 'category',
+      title: 'Category',
       type: 'array',
-      of: [{type: 'castMember'}],
-    },
-    {
-      name: 'crewMembers',
-      title: 'Crew Members',
-      type: 'array',
-      of: [{type: 'crewMember'}],
+      of: [{type: 'category'}],
     },
   ],
-  preview: {
-    select: {
-      title: 'title',
-      date: 'releaseDate',
-      media: 'poster',
-      castName0: 'castMembers.0.person.name',
-      castName1: 'castMembers.1.person.name',
-    },
-    prepare(selection) {
-      const year = selection.date && selection.date.split('-')[0]
-      const cast = [selection.castName0, selection.castName1].filter(Boolean).join(', ')
-
-      return {
-        title: `${selection.title} ${year ? `(${year})` : ''}`,
-        date: selection.date,
-        subtitle: cast,
-        media: selection.media,
-      }
-    },
-  },
 }
