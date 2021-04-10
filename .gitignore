@@ -1,5 +1,5 @@
-*/node_modules/*
-client/dist/*
+*/node_modules/
+client/dist/
 client/.cache/
 client/.vscode/
 client/*/*.js
