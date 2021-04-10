@@ -7,37 +7,18 @@ import Centralizer from '../../components/Stucture/Centralizer/Centralizer';
 import ViewLayoutWrapper from '../../components/Layout/ViewLayout/ViewLayoutWrapper';
 import ViewColumn from '../../components/Layout/ViewLayout/ViewColumn';
 import ColumnStroke from '../../components/Composition/ColumnStroke';
+import { useQuery } from '@apollo/client';
+import { GENERAL_PREVIEW_ARTICLES } from '../../queries/sanity/sanityQueries';
 
-const greyStroke: CSS.Properties = {
-  position: "relative",
-  top: "-1px",
-  width: "534px",
-  height: "0px",
-  border: "1px solid rgba(0, 0, 0, 0.1)",
-  transform: "rotate(90deg)",
-  transformOrigin: "left"
-}
-const pinkStroke: CSS.Properties = {
-  position: "relative",
-  top: "-1px",
-  width: "334px",
-  height: "0px",
-  border: `1px solid ${useCompositionColor("pink")}`,
-  transform: "rotate(90deg)",
-  transformOrigin: "left"
-}
-const blueStroke: CSS.Properties = {
-  position: "absolute",
-  width: "334px",
-  height: "0px",
-  border: `1px solid ${useCompositionColor("blue")}`,
-  transform: "rotate(90deg)",
-  transformOrigin: "right",
-  right: 0,
-  bottom: "-2px"
-}
 
 const LandingView: React.FC = () => {
+
+  const { loading, error, data } = useQuery(GENERAL_PREVIEW_ARTICLES);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error :(</p>;
+  console.log(data);
+
   return (
     <ViewLayoutWrapper>
       <ViewColumn widthInPercent={35}>
