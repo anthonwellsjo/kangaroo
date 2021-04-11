@@ -14,7 +14,7 @@ const App = () => {
   return (
     <MainLayout>
       <Switch>
-        <Route path="/app.html/app">
+        <Route path="/">
           <LandingView />
         </Route>
       </Switch>

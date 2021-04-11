@@ -11,6 +11,7 @@ import { useQuery } from '@apollo/client';
 import { GENERAL_PREVIEW_ARTICLES } from '../../queries/sanity/sanityQueries';
 import ArticlePreview from './components/articlePreview/ArticlePreview';
 import Columnizer from '../../components/Stucture/Columnizer/Columnizer';
+import ArticleCard from './components/articleCard/articleCard';
 
 
 const LandingView: React.FC = () => {
@@ -34,13 +35,18 @@ const LandingView: React.FC = () => {
           </div>
         </Centralizer>
       </ViewColumn>
-      <ViewColumn widthInPercent={25}>
-        <div style={{marginTop: "50px"}}>
-          {data.allArticle.map(a => {
+      <ViewColumn fadeScroll widthInPercent={25}>
+        <div style={{marginTop: "50px", display: "flex", flexDirection:"column", alignItems:"center"}}>
+          {/* {data.allArticle.map(a => {
             return (<ArticlePreview key={a.slug.current} article={a} />)
+          }
+          )} */}
+          {data.allArticle.map(a => {
+            return (<ArticleCard key={a.slug.current} article={a} />)
           }
           )}
         </div>
+        
         <ColumnStroke style="grey" />
       </ViewColumn>
       <ViewColumn widthInPercent={25}>
