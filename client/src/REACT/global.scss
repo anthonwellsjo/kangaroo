@@ -40,3 +40,14 @@ p {
 .no-scroll {
   -ms-overflow-style: none;
 }
+
+.logo {
+  width: 100px;
+  height: 100px;
+  border-radius: 5px;;
+  background-size: cover;
+  background-position: center center;
+  transition: box-shadow 0.5s;
+  will-change: transform;
+  cursor: pointer;
+}
