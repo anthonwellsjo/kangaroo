@@ -3,6 +3,7 @@ import { useSpring, animated } from 'react-spring';
 import logo from '../../images/logo-trans.png';
 import CSS from 'csstype';
 import BackDropAnimation from '../BackDropAnimation/BackDropAnimation';
+import LogoMenuContent from '../LogoMenuContent/LogoMenuContent';
 
 
 
@@ -11,11 +12,10 @@ const trans = (x, y, s) => `perspective(100px) rotateX(${x}deg) rotateY(${y}deg)
 
 const LogoMenu: React.FC = () => {
   const [state, setState] = useState({ showBackdrop: false });
-  const [props, set] = useSpring(() => ({ xys: [0, 0, 1], config: { mass: 1, tension: 350, friction: 20 } }))
+  const [props, set] = useSpring(() => ({ xys: [0, 0, 1], config: { mass: 6, tension: 350, friction: 20 } }))
 
   return (
     <>
-      <BackDropAnimation show={state.showBackdrop} />
       <animated.div
         onMouseMove={({ clientX: x, clientY: y }) => set({ xys: calc(x, y) })}
         onMouseLeave={() => set({ xys: [0, 0, 1] })}
@@ -29,6 +29,8 @@ const LogoMenu: React.FC = () => {
       >
         <img style={{ width: "80px" }} src={logo} alt="logo" />
       </animated.div>
+      <BackDropAnimation show={state.showBackdrop} />
+      <LogoMenuContent onCloseClicked={() => setState(prev => ({ ...prev, showBackdrop: false }))} show={state.showBackdrop} />
     </>
   )
 }
