@@ -5,6 +5,7 @@ import LandingView from './src/views/LandingViews/LandingView';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { ApolloProvider } from '@apollo/client/react';
 import { ApolloClient, InMemoryCache } from '@apollo/client';
+import CategoryView from './src/views/categoryView/CategoryView';
 
 const domContainer = document.getElementById('root');
 
@@ -14,6 +15,7 @@ const App = () => {
   return (
     <MainLayout>
       <Switch>
+        <Route path="/category/:catName" component={CategoryView}/>
         <Route path="/">
           <LandingView />
         </Route>

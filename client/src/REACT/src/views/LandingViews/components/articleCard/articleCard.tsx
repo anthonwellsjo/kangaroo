@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSpring, animated } from 'react-spring';
 import Centralizer from '../../../../components/Stucture/Centralizer/Centralizer';
 import Columnizer from '../../../../components/Stucture/Columnizer/Columnizer';
 import CSS from 'csstype';
+import { useHistory } from 'react-router';
+import useSlugerize from '../../../../hooks/useSlugerize';
+import useDeslugerize from '../../../../hooks/useDeslugerize';
 
 
 const calc = (x, y) => [-(y - window.innerHeight / 2) / 40, (x - window.innerWidth / 2) / 40, 1.01];
@@ -25,8 +28,15 @@ interface props {
   article: Article
 }
 
+
+
 const ArticleCard = ({ article }: props) => {
   const [props, set] = useSpring(() => ({ xys: [0, 0, 1], config: { mass: 1, tension: 350, friction: 20 } }));
+  const history = useHistory();
+
+  const onCategoryClickedEventHandler = (categoryName: string) => {
+    history.push(`/category/${useSlugerize(categoryName)}`);
+  }
   return (
     <animated.div
       className="articleCard"
@@ -35,7 +45,7 @@ const ArticleCard = ({ article }: props) => {
       style={{ transform: props.xys.to(trans) }}
     >
       <Columnizer>
-        <div style={{ position: "absolute", top: 0, height: "50px", width: "100%" }}>
+        <div style={{ position: "absolute", top: 0, height: "60px", width: "100%" }}>
           <Centralizer>
             <p style={titleStyle}>{article.title}</p>
           </Centralizer>
@@ -43,8 +53,17 @@ const ArticleCard = ({ article }: props) => {
         <div style={{ height: "200px", width: "100%", overflow: "hidden", display: "flex", alignItems: "center", justifyContent: "center", paddingBottom: "20px" }}>
           <img style={{ maxWidth: "95%", marginTop: "50px", maxHeight: "150px" }} src={article.articleImage.asset.url}></img>
         </div>
-        <div style={{ height: "20px", position: "absolute", left: "10px", bottom: "10px" }}>
-          <p style={catStyle}>{article.category.map((c, i, a) => `${c.name}${a.length > i + 1 ? ", " : ""}`).join("")}</p>
+        <div style={{ height: "20px", position: "absolute", left: "10px", bottom: "5px" }}>
+          {article.category.map((c, i, a) => {
+            return (
+              <div key={c.name} style={{display: "inline"}}>
+                <span onClick={() => { onCategoryClickedEventHandler(c.name) }} className="articleCardCategory" >
+                  {c.name}
+                </span>
+                <span>{i < a.length - 1 ? ", " : ""}</span>
+              </div>
+            )
+          })}
         </div>
       </Columnizer>
     </animated.div>
