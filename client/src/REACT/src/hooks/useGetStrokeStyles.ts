@@ -23,7 +23,7 @@ const useGetStrokeStyles = (style: StrokeStyle) => {
     }
     case "grey": {
       styling = {
-        position: "relative",
+        position: "fixed",
         top: "-1px",
         width: "534px",
         height: "0px",

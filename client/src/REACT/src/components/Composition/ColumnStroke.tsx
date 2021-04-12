@@ -21,8 +21,8 @@ const ColumnStroke = ({ style }: props) => {
       {style == "pink" && <div style={{ position: "relative", top: "150px", left: "-8px" }}>
         <Rectangle color="pink" height="55px" width="8px" />
       </div>}
-      {style == "grey" && <div style={{ position: "relative", top: "400px", left: "-5px" }}>
-        <Rectangle color="grey" height="55px" width="5px" />
+      {style == "grey" && <div style={{ position: "absolute", top: "430px"}}>
+        <Rectangle color="grey" height="55px" width="4px" />
       </div>}
     </>
   )

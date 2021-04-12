@@ -1,0 +1,29 @@
+import React, { ReactNode } from 'react';
+import { animated, useSpring } from 'react-spring';
+
+interface props {
+  trigger: boolean,
+  children: ReactNode
+}
+
+const ZoomInTransition = ({ children, trigger }: props) => {
+
+  const styles = useSpring({
+    reverse: trigger,
+    to: { transform: "scale(0)" },
+    from: { transform: "scale(1)" },
+    config:{
+      mass: 1,
+      tension: 200,
+      friction: 30
+    }
+  })
+
+  return (
+    <animated.div style={styles}>
+      {children}
+    </animated.div>
+  )
+}
+
+export default ZoomInTransition;

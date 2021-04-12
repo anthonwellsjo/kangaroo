@@ -9,7 +9,7 @@ interface HTMLLinkButton extends HTMLButtonElement {
   pageName: PageName
 }
 
-type CompositionColor = "orange" | "blue" | "pink" | "grey";
+type CompositionColor = "orange" | "blue" | "pink" | "grey" | "registerButton";
 
 type StrokeStyle = "blue" | "pink" | "grey";
 

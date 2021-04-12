@@ -25,12 +25,13 @@ const catStyle: CSS.Properties = {
 }
 
 interface props {
-  article: Article
+  article: Article,
+  onArticleClicked: () => void
 }
 
 
 
-const ArticleCard = ({ article }: props) => {
+const ArticleCard = ({ article, onArticleClicked }: props) => {
   const [props, set] = useSpring(() => ({ xys: [0, 0, 1], config: { mass: 1, tension: 350, friction: 20 } }));
   const history = useHistory();
 
@@ -40,6 +41,7 @@ const ArticleCard = ({ article }: props) => {
   return (
     <animated.div
       className="articleCard"
+      onClick={onArticleClicked}
       onMouseMove={({ clientX: x, clientY: y }) => set({ xys: calc(x, y) })}
       onMouseLeave={() => set({ xys: [0, 0, 1] })}
       style={{ transform: props.xys.to(trans) }}
@@ -56,7 +58,7 @@ const ArticleCard = ({ article }: props) => {
         <div style={{ height: "20px", position: "absolute", left: "10px", bottom: "5px" }}>
           {article.category.map((c, i, a) => {
             return (
-              <div key={c.name} style={{display: "inline"}}>
+              <div key={c.name} style={{ display: "inline" }}>
                 <span onClick={() => { onCategoryClickedEventHandler(c.name) }} className="articleCardCategory" >
                   {c.name}
                 </span>

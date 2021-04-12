@@ -82,4 +82,10 @@ p {
   text-decoration: underline;
 }
 
+p.article,
+h1.article,
+h2.article {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+
 /*# sourceMappingURL=global.css.map */

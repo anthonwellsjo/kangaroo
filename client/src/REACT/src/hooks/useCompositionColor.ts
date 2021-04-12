@@ -5,6 +5,7 @@ const useCompositionColor = (color: CompositionColor) => {
   if (color == "blue") return "#DFE7F2"
   if (color == "pink") return "#F0C7B1"
   if (color == "grey") return "#C4C4C4"
+  if (color == "registerButton") return "#81B29A"
 }
 
 export default useCompositionColor;

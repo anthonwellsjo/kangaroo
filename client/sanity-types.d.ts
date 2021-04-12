@@ -3,6 +3,7 @@ interface GeneralArticlesData {
 }
 
 interface Article {
+  _id: string,
   title: string,
   slug: {
     current: string
@@ -15,4 +16,25 @@ interface Article {
   category: [{
     name: string
   }]
+}
+
+interface FullArticleData {
+  Article: {
+    overviewRaw: [Block]
+  }
+}
+
+interface Block {
+  _key: string,
+  _type: string,
+  children: [
+    {
+      _key: string,
+      _type: string,
+      marks: [],
+      text: string
+    }
+  ],
+  markDefs: [],
+  style: string
 }
