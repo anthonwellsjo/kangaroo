@@ -7,6 +7,10 @@ import { ApolloProvider } from '@apollo/client/react';
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 import CategoryView from './src/views/categoryView/CategoryView';
 import { PageProvider } from './src/contexts/pageContext';
+import firebase from "firebase/app";
+import "firebase/auth";
+import { FirebaseAuthProvider } from "@react-firebase/auth";
+import { firebaseConfig } from '../../firebaseconfig';
 
 const domContainer = document.getElementById('root');
 
@@ -27,10 +31,12 @@ const App = () => {
 
 ReactDOM.render(
   <ApolloProvider client={client}>
-    <PageProvider>
-      <Router>
-        {App()}
-      </Router>
-    </PageProvider>
+    <FirebaseAuthProvider {...firebaseConfig} firebase={firebase}>
+      <PageProvider>
+        <Router>
+          {App()}
+        </Router>
+      </PageProvider>
+    </FirebaseAuthProvider>
   </ApolloProvider>,
   domContainer);
