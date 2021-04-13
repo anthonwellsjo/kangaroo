@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useSpring, animated } from 'react-spring';
+import { PageContext } from '../../contexts/pageContext';
 import logo from '../../images/logo-trans.png';
-import CSS from 'csstype';
 import BackDropAnimation from '../BackDropAnimation/BackDropAnimation';
 import LogoMenuContent from '../LogoMenuContent/LogoMenuContent';
 
@@ -11,7 +11,7 @@ const calc = (x, y) => [-(y - window.innerHeight / 2) / 40, (x - window.innerWid
 const trans = (x, y, s) => `perspective(100px) rotateX(${x}deg) rotateY(${y}deg) scale(${s})`;
 
 const LogoMenu: React.FC = () => {
-  const [state, setState] = useState({ showBackdrop: false });
+  const [page, setPage] = useContext(PageContext);
   const [props, set] = useSpring(() => ({ xys: [0, 0, 1], config: { mass: 6, tension: 350, friction: 20 } }))
 
   return (
@@ -19,7 +19,7 @@ const LogoMenu: React.FC = () => {
       <animated.div
         onMouseMove={({ clientX: x, clientY: y }) => set({ xys: calc(x, y) })}
         onMouseLeave={() => set({ xys: [0, 0, 1] })}
-        onClick={() => setState(prev => ({ ...prev, showBackdrop: !state.showBackdrop }))}
+        onClick={() => setPage(prev => ({ ...prev, showKangarooBackdrop: !page.showKangarooBackdrop }))}
         className="logo"
         style={{
           transform: props.xys.interpolate(trans), position: "fixed",
@@ -29,8 +29,8 @@ const LogoMenu: React.FC = () => {
       >
         <img style={{ width: "80px" }} src={logo} alt="logo" />
       </animated.div>
-      <BackDropAnimation show={state.showBackdrop} />
-      <LogoMenuContent onCloseClicked={() => setState(prev => ({ ...prev, showBackdrop: false }))} show={state.showBackdrop} />
+      <BackDropAnimation show={page.showKangarooBackdrop} />
+      <LogoMenuContent onCloseClicked={() => setPage(prev => ({ ...prev, showKangarooBackdrop: false }))} show={page.showKangarooBackdrop} />
     </>
   )
 }

@@ -20,6 +20,10 @@ a:hover {
   font-family: "Martel";
 }
 
+.link:hover {
+  text-decoration: underline;
+}
+
 h1,
 h2,
 h3,

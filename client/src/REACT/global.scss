@@ -19,6 +19,11 @@ a:hover {
   color: grey;
   font-family: 'Martel';
 }
+
+.link:hover{
+  text-decoration: underline;
+}
+
 h1,
 h2,
 h3,
@@ -92,3 +97,4 @@ h1.article,
 h2.article {
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
+

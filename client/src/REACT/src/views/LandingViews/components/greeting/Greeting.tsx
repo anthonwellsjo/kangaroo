@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import CSS from 'csstype';
 import useCompositionColor from '../../../../hooks/useCompositionColor';
+import { PageContext } from '../../../../contexts/pageContext';
 
 const h11: CSS.Properties = {
   fontSize: "3.5em",
@@ -21,12 +22,25 @@ const p: CSS.Properties = {
 }
 
 const Greeting: React.FC = () => {
+
+  const [page, setPage] = useContext(PageContext);
   return (
     <div>
       <h1 style={h11}>Allting</h1>
       <h1 style={h12}>på en plattform</h1>
       <p style={p}>
-        Bli en bättre förälder tillsammans med oss på <span style={{ ...p,fontWeight:700, color: useCompositionColor("orange") }}>kangaroo</span>. Prova gratis i 30 dagar.
+        Bli en bättre förälder tillsammans med oss på <span
+          onClick={() => setPage(prev => ({ ...prev, showKangarooBackdrop: true }))}
+          className="link"
+          style={{
+            ...p,
+            fontWeight: 700,
+            color: useCompositionColor("orange"),
+            cursor: "pointer",
+            position:"relative",
+            zIndex: 1
+          }}>
+          kangaroo</span>. Prova gratis i 30 dagar.
       </p>
     </div>
   )

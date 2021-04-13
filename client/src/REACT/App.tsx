@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { ApolloProvider } from '@apollo/client/react';
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 import CategoryView from './src/views/categoryView/CategoryView';
+import { PageProvider } from './src/contexts/pageContext';
 
 const domContainer = document.getElementById('root');
 
@@ -15,7 +16,7 @@ const App = () => {
   return (
     <MainLayout>
       <Switch>
-        <Route path="/category/:catName" component={CategoryView}/>
+        <Route path="/category/:catName" component={CategoryView} />
         <Route path="/">
           <LandingView />
         </Route>
@@ -26,8 +27,10 @@ const App = () => {
 
 ReactDOM.render(
   <ApolloProvider client={client}>
-    <Router>
-      {App()}
-    </Router>
+    <PageProvider>
+      <Router>
+        {App()}
+      </Router>
+    </PageProvider>
   </ApolloProvider>,
   domContainer);

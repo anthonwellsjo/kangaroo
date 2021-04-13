@@ -1,0 +1,3 @@
+interface PageContextData {
+  showKangarooBackdrop: boolean
+}
