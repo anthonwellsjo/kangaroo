@@ -46,7 +46,7 @@ const LandingView: React.FC = () => {
             </div>
           </Centralizer>
         </ViewColumn>
-        <ViewColumn fadeScroll widthInPercent={28}>
+        <ViewColumn scrollable fadeScroll widthInPercent={28}>
           <Columnizer>
             <div style={{ marginTop: "200px", paddingTop: "200px", paddingBottom: "200px", display: "flex", flexDirection: "column", alignItems: "center" }}>
               {data.allArticle.map(a => {
@@ -57,9 +57,13 @@ const LandingView: React.FC = () => {
           </Columnizer>
           <ColumnStroke style="grey" />
         </ViewColumn>
-        <ViewColumn widthInPercent={30}>
+        <ViewColumn widthInPercent={33}>
           <ColumnStroke style="pink" />
-          <SignInContainer />
+          <div style={{width: "100%", height: "100%"}}>
+          <Centralizer>
+            <SignInContainer />
+          </Centralizer>
+          </div>
           <ColumnStroke style="blue" />
         </ViewColumn>
       </ViewLayoutWrapper>
