@@ -3,16 +3,18 @@ import { animated, useSpring } from 'react-spring';
 
 interface props {
   trigger: boolean,
-  children: ReactNode
+  children: ReactNode,
+  delay?: number
 }
 
-const ZoomInTransition = ({ children, trigger }: props) => {
+const ZoomInTransition = ({ children, trigger, delay }: props) => {
 
   const styles = useSpring({
     reverse: trigger,
     to: { transform: "scale(0)" },
     from: { transform: "scale(1)" },
-    config:{
+    delay: delay > 0 ? delay : 0,
+    config: {
       mass: 1,
       tension: 200,
       friction: 30

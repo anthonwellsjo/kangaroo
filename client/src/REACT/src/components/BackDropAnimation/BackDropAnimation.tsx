@@ -17,7 +17,7 @@ const BackDropAnimation = ({ show }: props) => {
   if (!show) return null;
 
   return (
-    <div style={{position: "fixed", height: "100vh", width: "100vw", overflow: "hidden"}}>
+    <div style={{ position: "fixed", height: "100vh", width: "100vw", overflow: "hidden", zIndex: 1 }}>
       <animated.div style={{ ...styles, backgroundColor: useCompositionColor("orange"), height: "1px", width: "1px" }} />
     </div>
   )

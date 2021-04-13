@@ -56,12 +56,12 @@ const RegisterButton: React.FC = () => {
             justifyContent: "center",
             alignItems: "center",
           }}>
-            <h4 style={{ fontWeight: 800, margin: "auto auto auto auto", whiteSpace: "nowrap", color: "black" }}>
+            <h4 style={{ fontWeight: 800, margin: "8px auto auto auto", whiteSpace: "nowrap", color: "black" }}>
               Bli medlem
         </h4>
           </div>
         </animated.div>
-        <h4 style={{ color: "white", fontWeight: 100, margin: "auto auto auto auto" }}>
+        <h4 style={{ color: "white", fontWeight: 500, margin: "auto auto auto auto" }}>
           Testa nu
       </h4>
       </button>
