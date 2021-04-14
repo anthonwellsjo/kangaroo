@@ -13,7 +13,7 @@ import Columnizer from '../../components/Stucture/Columnizer/Columnizer';
 import { FirebaseAuthConsumer } from '@react-firebase/auth';
 import firebase from "firebase/app";
 import "firebase/auth";
-import LogInContainer from './components/LogInContainer/LogInContainer';
+import LogInContainer from './components/logInContainer/LogInContainer';
 
 interface LandingViewState {
   showArticleModal: boolean,
