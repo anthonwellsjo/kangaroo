@@ -96,20 +96,21 @@ const LogInContainer: React.FC = () => {
 
 
       {state.registerView &&
-
-        <FadeInTransition trigger={true}>
+        <>
           <div
-            style={{ position: "relative", zIndex: 1, width: "100%", display: "flex", justifyContent: "center" }}>
-            <h1 style={{ fontWeight: 900, color: "white", display: "inline-block", userSelect: "none" }}>Bli medlem</h1>
+            style={{ position: "absolute", top:0, zIndex: 1, width: "100%", display: "flex", justifyContent: "center" }}>
+            <h1 style={{ fontWeight: 900, color: "black", display: "inline-block", userSelect: "none" }}>Bli medlem</h1>
           </div>
           <Centralizer>
             <form style={{ marginTop: "30px" }} id="loginForm" onSubmit={handleSubmit(onSubmit)}>
               <div style={{ position: "relative", zIndex: 1, top: "-50px", width: "80%", borderRadius: "10px", height: "120px", display: "flex", justifyContent: "center", backgroundColor: "white", overflow: "hidden" }}>
-                <Columnizer>
-                  <input className="inputText" placeholder="Epost" type="email" {...register("email")} />
-                  <input className="inputText" placeholder="Lösenord" type="password" {...register("password", { required: true })} />
-                  {errors.password && <span id="varningstext">Vänligen ange ett lösenord</span>}
-                </Columnizer>
+                <FadeInTransition length={800} trigger={true}>
+                  <Columnizer>
+                    <input className="inputText" placeholder="Epost" type="email" {...register("email")} />
+                    <input className="inputText" placeholder="Lösenord" type="password" {...register("password", { required: true })} />
+                    {errors.password && <span id="varningstext">Vänligen ange ett lösenord</span>}
+                  </Columnizer>
+                </FadeInTransition>
               </div>
               <input className="signInButton" style={{ position: "relative", top: "-10px" }} value="Logga in" type="submit" />
             </form>
@@ -136,9 +137,9 @@ const LogInContainer: React.FC = () => {
               </button>
             </div>
           </Centralizer>
-        </FadeInTransition>
 
 
+        </>
       }
 
 

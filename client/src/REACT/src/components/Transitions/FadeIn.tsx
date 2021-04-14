@@ -4,14 +4,18 @@ import { animated, useSpring } from 'react-spring';
 interface props {
   children: ReactNode,
   delay?: number,
-  trigger: boolean
+  trigger: boolean,
+  length: number
 }
 
-const FadeInTransition = ({ children, delay, trigger }: props) => {
+const FadeInTransition = ({ children, delay, trigger, length }: props) => {
 
   const styles = useSpring({
-    to: { transform: trigger ? "scale(1)" : "scale(0)" },
-    from: { transform: "scale(0)" }
+    to: { opacity: trigger ? 1 : 0 },
+    from: { opacity: 0 },
+    config: {
+      duration: length
+    }
   })
 
   return (
