@@ -17,7 +17,7 @@ const LogoMenuContent = ({ show, onCloseClicked }: props) => {
       <Centralizer>
         <main style={{ position: "absolute", width: "70%", height: "50%", color: "white", marginTop: "-200px", userSelect: "none", zIndex: 2 }}>
           <BreakInTransition trigger={show} height={"250px"}>
-            <h1>Bättre föräldrar</h1>
+            <h1 style={{marginLeft: "10px"}}>Bli bättre förälder med</h1>
             <h2 style={{ fontSize: "10em", marginTop: "-75px" }}>Kangaroo</h2>
           </BreakInTransition>
         </main>

@@ -10,9 +10,9 @@ interface props {
 const ZoomInTransition = ({ children, trigger, delay }: props) => {
 
   const styles = useSpring({
-    reverse: trigger,
-    to: { transform: "scale(0)" },
-    from: { transform: "scale(1)" },
+    // reverse: trigger,
+    to: { transform: trigger ? "scale(1)" : "scale(0)" },
+    from: { transform: "scale(0)" },
     delay: delay > 0 ? delay : 0,
     config: {
       mass: 1,

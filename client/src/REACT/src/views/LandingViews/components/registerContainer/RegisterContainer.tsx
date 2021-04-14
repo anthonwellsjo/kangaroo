@@ -7,27 +7,33 @@ import Columnizer from '../../../../components/Stucture/Columnizer/Columnizer';
 
 type Inputs = {
   email: string,
-  password: string,
+  password: string
 };
 
-const RegisterContainer: React.FC = () => {
+interface props {
+  onHover: () => void
+}
+
+const RegisterContainer = ({ onHover }: props) => {
   const { register, handleSubmit, watch, formState: { errors } } = useForm<Inputs>();
   const onSubmit = data => console.log(data);
   return (
     <>
-      <div style={{ position: "relative", zIndex: 1, width: "100%", display: "flex", justifyContent: "center" }}>
-        <h1 style={{ fontWeight: 900, color: "white", display: "inline-block" }}>Registrera mig</h1>
+      <div
+        onMouseEnter={onHover}
+        style={{ position: "relative", zIndex: 1, width: "100%", display: "flex", justifyContent: "center" }}>
+        <h1 style={{ fontWeight: 900, color: "white", display: "inline-block", userSelect: "none" }}>Bli medlem</h1>
       </div>
       <Centralizer>
         <form style={{ marginTop: "30px" }} id="loginForm" onSubmit={handleSubmit(onSubmit)}>
-          <div style={{ position: "relative", zIndex: 1, top: "-50px", width: "60%", borderRadius: "10px", height: "120px", display: "flex", justifyContent: "center", backgroundColor: "white", overflow: "hidden" }}>
+          <div style={{ position: "relative", zIndex: 1, top: "-50px", width: "80%", borderRadius: "10px", height: "120px", display: "flex", justifyContent: "center", backgroundColor: "white", overflow: "hidden" }}>
             <Columnizer>
               <input className="inputText" placeholder="Epost" type="email" {...register("email")} />
               <input className="inputText" placeholder="Lösenord" type="password" {...register("password", { required: true })} />
               {errors.password && <span id="varningstext">Vänligen ange ett lösenord</span>}
             </Columnizer>
           </div>
-          <input className="signInButton" style={{ position: "relative", top: "-10px" }} type="submit" />
+          <input className="signInButton" style={{ position: "relative", top: "-10px" }} value="Registrera" type="submit" />
         </form>
       </Centralizer>
       <Centralizer>

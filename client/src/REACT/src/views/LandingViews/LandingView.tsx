@@ -13,7 +13,7 @@ import Columnizer from '../../components/Stucture/Columnizer/Columnizer';
 import { FirebaseAuthConsumer } from '@react-firebase/auth';
 import firebase from "firebase/app";
 import "firebase/auth";
-import SignInContainer from './components/signInContainer/SignInContainer';
+import LogInContainer from './components/LogInContainer/LogInContainer';
 
 interface LandingViewState {
   showArticleModal: boolean,
@@ -61,7 +61,7 @@ const LandingView: React.FC = () => {
           <ColumnStroke style="pink" />
           <div style={{width: "100%", height: "100%"}}>
           <Centralizer>
-            <SignInContainer />
+            <LogInContainer />
           </Centralizer>
           </div>
           <ColumnStroke style="blue" />
