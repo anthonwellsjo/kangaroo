@@ -8,11 +8,12 @@ interface props {
   length: number
 }
 
-const FadeInTransition = ({ children, delay, trigger, length }: props) => {
+const FadeInTransition = ({ children, delay = 0, trigger, length }: props) => {
 
   const styles = useSpring({
     to: { opacity: trigger ? 1 : 0 },
     from: { opacity: 0 },
+    delay: delay,
     config: {
       duration: length
     }

@@ -14,6 +14,8 @@ import { FirebaseAuthConsumer } from '@react-firebase/auth';
 import firebase from "firebase/app";
 import "firebase/auth";
 import LogInContainer from './components/logInContainer/LogInContainer';
+import LoadingScreen from '../../components/LoadingScreen/LoadingScreen';
+import FadeInTransition from '../../components/Transitions/FadeIn';
 
 interface LandingViewState {
   showArticleModal: boolean,
@@ -24,9 +26,6 @@ const LandingView: React.FC = () => {
   const [state, setState] = useState<LandingViewState>({ showArticleModal: false, currentArticle: undefined })
 
   const { loading, error, data } = useQuery<GeneralArticlesData>(GENERAL_PREVIEW_ARTICLES);
-
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error :(</p>;
 
   console.log(data);
 
@@ -47,22 +46,31 @@ const LandingView: React.FC = () => {
           </Centralizer>
         </ViewColumn>
         <ViewColumn scrollable fadeScroll widthInPercent={28}>
-          <Columnizer>
-            <div style={{ marginTop: "200px", paddingTop: "200px", paddingBottom: "200px", display: "flex", flexDirection: "column", alignItems: "center" }}>
-              {data.allArticle.map(a => {
-                return (<ArticleCard onArticleClicked={() => { setState(prev => ({ ...prev, currentArticle: a, showArticleModal: true })) }} key={a._id} article={a} />)
-              }
-              )}
-            </div>
-          </Columnizer>
+          {loading && (
+            <FadeInTransition length={400} trigger={true}>
+              <LoadingScreen />
+            </FadeInTransition>
+          )}
+          {error && <h1>Cant reach sanity, are you on localhost:1234 ? Are you connected to internet?</h1>}
+          {!loading && !error && (
+            <Columnizer>
+              <div style={{ marginTop: "200px", paddingTop: "200px", paddingBottom: "200px", display: "flex", flexDirection: "column", alignItems: "center" }}>
+                {data.allArticle.map(a => {
+                  return (<ArticleCard onArticleClicked={() => { setState(prev => ({ ...prev, currentArticle: a, showArticleModal: true })) }} key={a._id} article={a} />)
+                }
+                )}
+              </div>
+            </Columnizer>
+          )
+          }
           <ColumnStroke style="grey" />
         </ViewColumn>
         <ViewColumn widthInPercent={33}>
           <ColumnStroke style="pink" />
-          <div style={{width: "100%", height: "100%"}}>
-          <Centralizer>
-            <LogInContainer />
-          </Centralizer>
+          <div style={{ width: "100%", height: "100%" }}>
+            <Centralizer>
+              <LogInContainer />
+            </Centralizer>
           </div>
           <ColumnStroke style="blue" />
         </ViewColumn>

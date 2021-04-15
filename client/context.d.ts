@@ -1,3 +1,4 @@
 interface PageContextData {
-  showKangarooBackdrop: boolean
+  showKangarooBackdrop: boolean,
+  loginAlreadyRegisteredUser: boolean
 }
