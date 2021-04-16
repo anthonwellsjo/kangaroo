@@ -24,7 +24,7 @@ const RegisterContainer = ({ onOpen }: props) => {
         <h1 onClick={onOpen} style={{ fontWeight: 900, color: "white", display: "inline-block", userSelect: "none" }}>Bli medlem</h1>
       </div>
       <Centralizer>
-        <form style={{ marginTop: "30px" }} id="registerForm" onSubmit={handleSubmit(onSubmit)}>
+        <form style={{ marginTop: "30px" }} id="registerForm" className="loginForm" onSubmit={handleSubmit(onSubmit)}>
           <div style={{ position: "relative", zIndex: 1, top: "-50px", width: "80%", borderRadius: "10px", height: "120px", display: "flex", justifyContent: "center", backgroundColor: "white", overflow: "hidden" }}>
             <Columnizer>
               <input id="registerEmail" className="inputText" placeholder="Epost" type="email" {...register("email")} />
