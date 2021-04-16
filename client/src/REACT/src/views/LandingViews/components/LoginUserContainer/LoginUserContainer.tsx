@@ -31,7 +31,7 @@ const LoginUserContainer = ({ onOpen }: props) => {
         </FadeInTransition>
       </div>
       <Centralizer>
-        <form style={{ marginTop: "30px" }} id="loginForm" onSubmit={handleSubmit(onSubmit)}>
+        <form style={{ marginTop: "30px" }} id="loginForm" className="loginForm" onSubmit={handleSubmit(onSubmit)}>
           <div style={{ position: "relative", zIndex: 1, top: "-50px", width: "80%", borderRadius: "10px", height: "120px", display: "flex", justifyContent: "center", backgroundColor: "white", overflow: "hidden" }}>
             <FadeInTransition length={800} trigger={true}>
               <Columnizer>

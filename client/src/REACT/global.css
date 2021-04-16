@@ -85,7 +85,7 @@ label {
   background-color: black;
 }
 
-#loginForm {
+.loginForm {
   width: 90%;
   height: 200px;
   display: flex;
