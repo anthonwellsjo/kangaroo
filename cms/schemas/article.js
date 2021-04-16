@@ -1,4 +1,4 @@
-import {MdAssignment as icon} from 'react-icons/md'
+import { MdAssignment as icon } from 'react-icons/md'
 
 
 export default {
@@ -37,6 +37,18 @@ export default {
       type: 'number',
     },
     {
+      name: 'minAgeMonths',
+      title: 'Minimum age in months',
+      type: 'number',
+      description: "Minimum age (in months) for relatability"
+    },
+    {
+      name: 'maxAgeMonths',
+      title: 'Maximum age in months',
+      type: 'number',
+      description: "Maximum age (in months) for relatability"
+    },
+    {
       name: 'articleImage',
       title: 'Article Image',
       type: 'image',
@@ -48,7 +60,7 @@ export default {
       name: 'category',
       title: 'Category',
       type: 'array',
-      of: [{type: 'category'}],
+      of: [{ type: 'category' }],
     },
   ],
 }

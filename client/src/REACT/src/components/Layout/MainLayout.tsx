@@ -19,7 +19,7 @@ const MainLayout: React.FC = ({ children }) => {
       <Centralizer>
         <Frame>
           {children}
-          <Navbar />
+          {/* <Navbar /> */}
           {/* <SiteTitle /> */}
           <div style={{position:"absolute", left: "20px", top: "90px", }}>
             <Rectangle color={"orange"} height="90px" width="10px" />

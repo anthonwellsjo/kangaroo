@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc",
-    "dev": "concurrently \" tsc --watch \" \" sass --watch ./src/REACT/ \" \" parcel app.html \" " ,
+    "dev": "concurrently \" tsc --watch \" \" sass --watch ./src/REACT/ \" \" parcel app.html \" ",
     "start": "concurrently \" tsc \" \" sass ./src/REACT/ \" \" parcel index.html \" "
   },
   "repository": {
@@ -19,11 +19,17 @@
   },
   "mainpage": "https://github.com/anthonwellsjo/kangaroo#readme",
   "dependencies": {
+    "@apollo/client": "^3.3.14",
     "@parcel/transformer-image": "^2.0.0-nightly.1981",
+    "@react-firebase/auth": "^0.2.10",
     "csstype": "^3.0.7",
+    "firebase": "^8.4.0",
+    "graphql": "^15.5.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-hook-form": "^7.0.7",
     "react-router-dom": "^5.2.0",
+    "react-spring": "^9.1.0",
     "src": "^1.1.2"
   },
   "devDependencies": {

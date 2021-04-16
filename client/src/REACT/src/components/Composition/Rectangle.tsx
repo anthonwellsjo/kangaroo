@@ -11,6 +11,7 @@ interface props {
 const Rectangle = ({ height, width, color }: props) => {
 
   const style: CSS.Properties = {
+    position: "fixed",
     height: height,
     width: width,
     backgroundColor: useCompositionColor(color)
