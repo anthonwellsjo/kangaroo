@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "tsc",
+    "build": "concurrently \" tsc \" \" sass ./src/REACT/ \" ",
     "dev": "concurrently \" tsc --watch \" \" sass --watch ./src/REACT/ \" \" parcel app.html \" ",
-    "start": "concurrently \" tsc \" \" sass ./src/REACT/ \" \" parcel index.html \" "
+    "start": "parcel index.html app.html"
   },
   "repository": {
     "type": "git",
