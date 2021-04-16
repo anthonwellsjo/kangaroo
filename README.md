@@ -5,7 +5,8 @@
 ### Inside /client/
 - npm install
 - npm run build
-- npm start
+- npm start (ignore errors ‼  Could not load source file etc)
+- open http://localhost:1234/index.html in your browser
 - ✨Magic ✨
 
 
