@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Greeting from './components/greeting/Greeting';
 import Centralizer from '../../components/Stucture/Centralizer/Centralizer';
 import ViewLayoutWrapper from '../../components/Layout/ViewLayout/ViewLayoutWrapper';
@@ -16,32 +16,44 @@ import "firebase/auth";
 import LogInContainer from './components/logInContainer/LogInContainer';
 import LoadingScreen from '../../components/LoadingScreen/LoadingScreen';
 import FadeInTransition from '../../components/Transitions/FadeIn';
-import UPPGIFTmodal from './components/UPPGIFTmodal';
+import { PageContext } from '../../contexts/pageContext';
 
 interface LandingViewState {
   showArticleModal: boolean,
   currentArticle?: Article,
-  showUPPGIFT: boolean
 }
 
 const LandingView: React.FC = () => {
-  const [state, setState] = useState<LandingViewState>({ showArticleModal: false, currentArticle: undefined, showUPPGIFT: false })
+  const [state, setState] = useState<LandingViewState>({ showArticleModal: false, currentArticle: undefined });
+  const [page, setPage] = useContext(PageContext);
 
   const { loading, error, data } = useQuery<GeneralArticlesData>(GENERAL_PREVIEW_ARTICLES);
 
-  console.log(data);
 
+  const onLogOutEventHandler = () => {
+    firebase.auth().signOut()
+      .then(() => {
+        setPage(prev => ({ ...prev, user: firebase.auth().currentUser }));
+      })
+      .catch(err => console.log(err))
 
-  //useeffect med tom depenency-array, vilket innebär att den bara körs en gång när komponenten mount:ar
-  useEffect(() => {
-    setTimeout(() => {
-      setState(prev => ({ ...prev, showUPPGIFT: true }))
-    }, 1500);
-  }, [])
+  }
+
 
   return (
     <>
-      <UPPGIFTmodal close={() => setState(prev => ({ ...prev, showUPPGIFT: false }))} show={state.showUPPGIFT} />
+      {page.user && <button
+        style={{
+          position: "fixed",
+          top: "20px",
+          right: "200px",
+          backgroundColor: "red"
+        }}
+        onClick={onLogOutEventHandler}
+      >
+        Sign Out
+        </button>
+      }
       <ViewLayoutWrapper>
         <ViewColumn widthInPercent={32}>
           <Centralizer>

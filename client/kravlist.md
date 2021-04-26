@@ -1,23 +1,16 @@
 Kravlista för källkodsprojektet
-Nummer	Max.Poäng	Kriterium	Beskrivning
-1	5		Ditt inlämnade git-repo är samma som i tidigare inlämningsuppgift.
-2	7	1	Ditt inlämnade git-repo ska innehålla en readme.md fil som kort beskriver vad som behöver göras för att man ska kunna bygga och besöka applikationen via webbläsaren. Den givna beskrivningen ska vara utförlig och korrekt.
-3	3	1	Ditt repo ska fortfarande innehålla index.html och app.html - index.html ska fungera likadant som i tidigare inlämningsuppgift när den besöks i webbläsaren.
-4	5	1, 2	Din källkod (javascript-filer, och ev. andra filer) ska kunna transpileras med ett byggsystem beskrivet i readme.md-filen.
-5	5	4	Endast lämpliga filer som inte kan genereras av byggsystemet, eller som kan installeras, ska vara versionshanterade.
- 
-Kravlista för app.html
-Nummer	Max.Poäng	Kriterium	Beskrivning
-6	5	3	När app.html besöks i webbläsaren ska nu din första prototyp renderas med React
-7	15	6	React-trädet som renderas som ska bestå av minst 5st komponenter som du skrivit själv och som finns med i källkoden. (alla komponenter behöver inte renderas samtidigt)
-8	5	7	Dina React komponenter är skrivna med JSX syntaxen. 
-9	5	7	Minst två av dina komponenter ska hantera ett "event" i Javascript, exempelvis från användaren.
-10	5	7	Minst två av dina komponenter ska använda sig av state för att rendera tillståndsbaserad information. (i.e. "conditional rendering")
-11	10	6, 10	En av dina komponenter använder sig av en Lifecycle hook för att påverka en annan komponents tillstånd.
-12	10	7	Via en av komponenterna ska användaren kunna spara information i LocalStorage.
-13	10	7	Informationen i LocalStorage används vid renderingen av React-trädet.
-14	5	6	
-I app.html används egen css, eller ett bibliotek för att ge dina komponenter stil och form
-
-15	5	6	
-I app.html används egen css för att ge dina komponenter rörelser
+Nummer	Max.Poäng	Kriterium	Beskrivning	Läranderesultat
+1	5		Ditt inlämnade arbete ska fortsätta från samma källkodsprojekt (repo) som tidigare inlämningsuppgifter. app.html ska vara uppdaterad med din vidareutvecklade prototyp	7
+2	5	1	Din readme.md fil ska uppdateras med korrekta instruktioner för hur din applikation ska startas och varefter efterföljande krav ska kunna testas	7
+3	3		I din källkod ska readme.md-filen under rubriken "externa bibliotek" innehålla en lista av dina installerade tredjepartsbibliotek. Förklara kort varför de används	7
+4	3	1	Readme.md ska även innehålla rubriken Tjänster där du listar och förklarar de Webb-API:er som anropas av din prototyp. - vart i koden & varför	7
+5	4	7	Med din versionshanteringsteknik ska det vara tydligt hur projektet kan återställas till en variant där ditt valda tredjepartspaket inte är installerat, och även där det läggs till i versionshistoriken	7
+6	6	1	Koden ska bestå av minst 12 React komponenter du skrivit själv med hjälp av JSX.	5
+7	6	1	Välj och installera ett färdigt javascript-paket i ditt källodsprojekt som används tillsammans med React.	5
+8	5	7	Din prototyp ska innehålla minst ett användningstillfälle av javascript biblioteket när den används via en webbläsare.	5
+9	6	6	Din applikation ska hämta och visa information för användaren som hämtas via anrop till ett externt REST API.	4
+10	6	9	Din applikation ska skicka information skapad via interaktion med användaren till ett externt REST API.	4
+11	6	9	Kommunikationen till externa Webb-API:er i applikationen ska vara väl avgränsat från applikationens UI med hjälp av lämplig kodstruktur.	4
+12	5	6	Minst två av dina egna komponenter ska utnyttja (läsa och/eller spara) information lokalt i webbläsaren via en datalagringsmetod som inte är local storage.	5
+13	5	6	Minst en av dina egna komponenter ska rendera och använda sig av en kontrollerad form komponent (i.e. en "Controlled Component")	5
+14	5	6	Minst fem av dina komponenter ska använda sig av state eller props för att rendera tillståndsbaserad information. (i.e. "conditional rendering")

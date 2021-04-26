@@ -1,4 +1,5 @@
 interface PageContextData {
   showKangarooBackdrop: boolean,
-  loginAlreadyRegisteredUser: boolean
+  loginAlreadyRegisteredUser: boolean,
+  user: firebase.User | null
 }

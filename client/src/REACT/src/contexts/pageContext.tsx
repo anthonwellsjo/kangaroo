@@ -8,7 +8,8 @@ const PageContext = createContext([page, setPage])
 const PageProvider: React.FC = ({ children }) => {
   const [page, setPage] = useState<PageContextData>({
     showKangarooBackdrop: false,
-    loginAlreadyRegisteredUser: true
+    loginAlreadyRegisteredUser: false,
+    user: null
     
   });
   return (
