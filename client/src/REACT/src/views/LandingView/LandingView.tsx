@@ -30,30 +30,12 @@ const LandingView: React.FC = () => {
   const { loading, error, data } = useQuery<GeneralArticlesData>(GENERAL_PREVIEW_ARTICLES);
 
 
-  const onLogOutEventHandler = () => {
-    firebase.auth().signOut()
-      .then(() => {
-        setPage(prev => ({ ...prev, user: firebase.auth().currentUser }));
-      })
-      .catch(err => console.log(err))
-
-  }
+  
 
 
   return (
     <>
-      {page.user && <button
-        style={{
-          position: "fixed",
-          top: "20px",
-          right: "200px",
-          backgroundColor: "red"
-        }}
-        onClick={onLogOutEventHandler}
-      >
-        Sign Out
-        </button>
-      }
+      
       <ViewLayoutWrapper>
         <ViewColumn widthInPercent={32}>
           <Centralizer>

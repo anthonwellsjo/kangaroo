@@ -21,12 +21,6 @@ const client = new ApolloClient({ uri: "https://8ci5beth.api.sanity.io/v1/graphq
 const App = () => {
   const [page, setPage] = useContext(PageContext);
 
-  useEffect(() => {
-    const user = firebase.auth().currentUser;
-    setPage(prev => ({ ...prev, user: user }));
-  }, [])
-
-
 
   return (
 
@@ -39,7 +33,9 @@ const App = () => {
             <LandingView />}
         </Route>
         <Route path="/dashboard/">
-          <DashBoardView />
+          {page.user ?
+            <DashBoardView /> :
+            <Redirect to={`/`} />}
         </Route>
       </Switch>
     </MainLayout>
