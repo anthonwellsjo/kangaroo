@@ -1,9 +1,9 @@
 import React, { createContext, useState } from 'react';
 
-let userContext = {};
-let setUserContext;
+let user = {};
+let setUser;
 
-const UserContext = createContext([userContext, setUserContext])
+const UserContext = createContext([user, setUser])
 
 const UserContextProvider: React.FC = ({ children }) => {
   const [user, setUser] = useState<UserContextData>({
@@ -11,7 +11,7 @@ const UserContextProvider: React.FC = ({ children }) => {
 
   });
   return (
-    <UserContext.Provider value={[UserContext, setUserContext]}>
+    <UserContext.Provider value={[user, setUser]}>
       {children}
     </UserContext.Provider>
   )

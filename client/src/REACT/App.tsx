@@ -12,6 +12,7 @@ import "firebase/auth";
 import { FirebaseAuthProvider } from "@react-firebase/auth";
 import { firebaseConfig } from '../../firebaseconfig';
 import DashBoardView from './src/views/DashBoardView/DashBoardView';
+import GlobalModalLayer from './src/components/GlobalModalLayer/GlobalModalLayer';
 
 const domContainer = document.getElementById('root');
 
@@ -24,21 +25,24 @@ const App = () => {
 
   return (
 
-    <MainLayout>
-      <Switch>
-        <Route path="/category/:catName" component={CategoryView} />
-        <Route exact path="/">
-          {page.user ?
-            <Redirect to={`/dashboard/${(page.user as firebase.User).uid}`} /> :
-            <LandingView />}
-        </Route>
-        <Route path="/dashboard/">
-          {/* {page.user ? */}
+    <GlobalModalLayer>
+      <MainLayout>
+        <Switch>
+          <Route path="/category/:catName" component={CategoryView} />
+          <Route exact path="/">
+            {page.user ?
+              <Redirect to={`/dashboard/${(page.user as firebase.User).uid}`} /> :
+              <LandingView />}
+          </Route>
+          <Route path="/dashboard/">
+            {/* {page.user ? */}
             <DashBoardView /> :
             {/* <Redirect to={`/`} />} */}
-        </Route>
-      </Switch>
-    </MainLayout>
+          </Route>
+        </Switch>
+
+      </MainLayout>
+    </GlobalModalLayer>
   )
 }
 

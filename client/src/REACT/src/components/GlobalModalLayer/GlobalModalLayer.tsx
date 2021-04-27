@@ -1,8 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { UserContext } from '../../contexts/userContext';
+import AddChildModal from '../Modals/AddChildModal';
 
-const GlobalModalLayer: React.FC = () => {
+const GlobalModalLayer: React.FC = ({ children }) => {
+  const [user, setUser] = useContext(UserContext);
   return (
-    <h1>global modal layer for modals + add child</h1>
+    <div>
+      {children}
+      {(user as UserContextData).showNewChildModal && <AddChildModal /> }
+    </div>
   )
 }
 
