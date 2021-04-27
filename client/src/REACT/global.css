@@ -35,6 +35,10 @@ p {
   font-family: "Martel";
 }
 
+h1{
+  font-weight: 300;
+}
+
 label {
   font-family: "Nunito Sans";
   font-size: 0.9em;

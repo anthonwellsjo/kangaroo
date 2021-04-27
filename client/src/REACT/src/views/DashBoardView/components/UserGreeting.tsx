@@ -7,15 +7,20 @@ interface props {
 
 const UserGreeting = ({ user }: props) => {
   return (
-    <h1 style={{
-      position: "relative",
-      left: "200px",
-      fontSize: "1.75em",
-      color: useCompositionColor("pink"),
-      fontWeight: 400,
-      whiteSpace:"nowrap",
-      overflow: "visible"
-    }}>Välkommen tillbaks <span style={{ color: "black" }}>{user.name}</span>!</h1>
+    <div style={{
+      width: "70%",
+      textAlign: "right",
+      position: "absolute",
+      top: "50px"
+    }}>
+      <h1 style={{
+        fontSize: "1.75em",
+        color: useCompositionColor("pink"),
+        fontWeight: 300,
+        whiteSpace: "nowrap",
+        overflow: "visible"
+      }}>Välkommen tillbaks <span style={{ color: "black" }}>{user.name}</span>!</h1>
+    </div>
   )
 }
 

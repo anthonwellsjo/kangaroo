@@ -33,9 +33,9 @@ const App = () => {
             <LandingView />}
         </Route>
         <Route path="/dashboard/">
-          {page.user ?
+          {/* {page.user ? */}
             <DashBoardView /> :
-            <Redirect to={`/`} />}
+            {/* <Redirect to={`/`} />} */}
         </Route>
       </Switch>
     </MainLayout>

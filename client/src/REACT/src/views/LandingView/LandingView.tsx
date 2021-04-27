@@ -35,7 +35,6 @@ const LandingView: React.FC = () => {
 
   return (
     <>
-      
       <ViewLayoutWrapper>
         <ViewColumn widthInPercent={32}>
           <Centralizer>

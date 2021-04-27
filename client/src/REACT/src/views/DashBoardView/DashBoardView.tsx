@@ -8,7 +8,8 @@ import FadeInTransition from '../../components/Transitions/FadeIn';
 import useCompositionColor from '../../hooks/useCompositionColor';
 import useFirebaseUsers from '../../queries/firebase/useFirebaseUsers';
 import useGetFirebaseUser from '../../queries/firebase/useGetFirebaseUser';
-import Notifications from './components/Notifications/Notifications';
+import NotificationContainer from './components/NotificationContainer/NotificationContainer';
+import UserDash from './components/UserDash/UserDash';
 import UserGreeting from './components/UserGreeting';
 
 const DashBoardView: React.FC = () => {
@@ -28,25 +29,52 @@ const DashBoardView: React.FC = () => {
     console.log("user", user);
   }, [data]);
 
-
+  let children;
+  if (user) {
+    if (user.children) {
+      children = [...user.children];
+    }
+  }
 
 
   return (
     <>
+      {/* {user &&
+        <FadeInTransition trigger delay={100} length={300}>
+          <UserGreeting user={user} />
+        </FadeInTransition>
+      } */}
       <ViewLayoutWrapper>
         {isPending && <LoadingScreen />}
         {hasError && <h1>Error!</h1>}
         {user &&
           <>
-            <FadeInTransition trigger length={300}>
-              <UserGreeting user={user} />
-            </FadeInTransition>
-            <ViewColumn widthInPercent={30} scrollable >
-              <FadeInTransition trigger length={300} delay={500}>
-                <Notifications user={user}/>
+            <ViewColumn widthInPercent={10} >
+              <div style={{
+                position: "absolute",
+                width: "100%",
+                height: "100%",
+                display: "flex",
+                alignItems: "center",
+                backgroundColor: useCompositionColor("grey")
+              }}>
+                <UserDash userChildren={children} />
+              </div>
+            </ViewColumn>
+            <ViewColumn widthInPercent={30} scrollable fadeScroll>
+              <FadeInTransition trigger length={300} delay={100}>
+                <NotificationContainer children={children} />
               </FadeInTransition>
             </ViewColumn>
-            <ViewColumn widthInPercent={70} scrollable >
+            <ViewColumn widthInPercent={60} scrollable >
+              <FadeInTransition trigger length={300} delay={600}>
+                <div
+                  style={{
+                    position: "relative",
+                    textAlign: "center"
+                  }}
+                ><h1>Articles</h1></div>
+              </FadeInTransition>
             </ViewColumn>
           </>
         }

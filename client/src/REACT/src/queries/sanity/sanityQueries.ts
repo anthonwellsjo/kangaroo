@@ -27,3 +27,21 @@ query GetFullArticle($id: ID!) {
   }
 }
 `;
+
+
+export const GET_USER_NOTIFICATIONS = gql`
+query GetUserNotifications($ageInMonths: Float) {
+  allNotification(where:{minAgeMonths:{lte: $ageInMonths}, maxAgeMonths: {gte: $ageInMonths}}) {
+    title
+    slug {
+      current
+    }
+    description
+    createdOn
+    externalId
+    isRegional
+    region
+    category{name}
+  }
+}
+`;
