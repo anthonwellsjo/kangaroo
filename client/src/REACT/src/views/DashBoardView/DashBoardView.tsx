@@ -1,11 +1,12 @@
 import { useSpring } from '@react-spring/core';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import ViewColumn from '../../components/Layout/ViewLayout/ViewColumn';
 import ViewLayoutWrapper from '../../components/Layout/ViewLayout/ViewLayoutWrapper';
 import LoadingScreen from '../../components/LoadingScreen/LoadingScreen';
 import Centralizer from '../../components/Stucture/Centralizer/Centralizer';
 import Columnizer from '../../components/Stucture/Columnizer/Columnizer';
 import FadeInTransition from '../../components/Transitions/FadeIn';
+import { PageContext } from '../../contexts/pageContext';
 import useCompositionColor from '../../hooks/useCompositionColor';
 import useFirebaseUsers from '../../queries/firebase/useFirebaseUsers';
 import useGetFirebaseUser from '../../queries/firebase/useGetFirebaseUser';
@@ -21,9 +22,14 @@ const DashBoardView: React.FC = () => {
   //Firebase-auth will still be used for auth.
 
   const [user, setUser] = useState<null | firebaseUser.Parent>(null)
+  const [page, setPage] = useContext(PageContext);
 
 
   const { isPending, hasError, data } = useFirebaseUsers();
+
+  useEffect(() => {
+    setPage(prev => ({ ...prev, showFocusOnRegisterBackdrop: false, showKangarooBackdrop: false, }))
+  })
 
   useEffect(() => {
     const user = useGetFirebaseUser(data, "anthon@gmail.com");

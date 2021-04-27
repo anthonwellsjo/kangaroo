@@ -39,6 +39,7 @@ const LogInContainer: React.FC = () => {
       position: "relative",
       boxShadow: "1px 1px 50px -10px grey",
       marginTop: "40px",
+      zIndex: 3,
       height: "500px", width: "300px",
       borderRadius: "20px",
       backgroundColor: useCompositionColor("orange"),

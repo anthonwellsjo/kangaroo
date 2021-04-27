@@ -8,9 +8,10 @@ const PageContext = createContext([page, setPage])
 const PageProvider: React.FC = ({ children }) => {
   const [page, setPage] = useState<PageContextData>({
     showKangarooBackdrop: false,
-    loginAlreadyRegisteredUser: false,
-    user: null
-    
+    loginAlreadyRegisteredUser: true,
+    user: null,
+    showFocusOnRegisterBackdrop: false
+
   });
   return (
     <PageContext.Provider value={[page, setPage]}>

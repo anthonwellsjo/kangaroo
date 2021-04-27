@@ -42,7 +42,7 @@ const RegisterButton: React.FC = () => {
     }
   })
   const onButtonClickedEventHandler = () => {
-    setPage(prev => ({ ...prev, loginAlreadyRegisteredUser: false }));
+    setPage(prev => ({ ...prev, loginAlreadyRegisteredUser: false, showFocusOnRegisterBackdrop: true }));
     document.getElementById("registerEmail").focus();
   }
 

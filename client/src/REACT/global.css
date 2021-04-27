@@ -289,4 +289,14 @@ h2.article {
   transform: scale(1.2);
 }
 
+.childBtn,
+.userBtn {
+  transition: all 0.3s;
+}
+
+.childBtn:hover,
+.userBtn:hover {
+  transform: scale(1.2);
+}
+
 /*# sourceMappingURL=global.css.map */

@@ -37,12 +37,12 @@ const UserDash = ({ userChildren: cn, userParent: up }: props) => {
           marginTop: "30px"
         }}>
           {cn.map(c => {
-            return <ChildProfile key={c.name+c.birthDate} child={c} />
+            return <ChildProfile key={c.name + c.birthDate} child={c} />
           })}
           <div style={{
 
           }}>
-            <NewChildButton/>
+            <NewChildButton />
           </div>
         </div>
       </div>
