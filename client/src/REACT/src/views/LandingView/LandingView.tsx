@@ -17,6 +17,7 @@ import LogInContainer from './components/logInContainer/LogInContainer';
 import LoadingScreen from '../../components/LoadingScreen/LoadingScreen';
 import FadeInTransition from '../../components/Transitions/FadeIn';
 import { PageContext } from '../../contexts/pageContext';
+import { Article, GeneralArticlesData } from '../../../../../sanity-types';
 
 interface LandingViewState {
   showArticleModal: boolean,
@@ -58,7 +59,7 @@ const LandingView: React.FC = () => {
           {error && <h1>Cant reach sanity, are you on localhost:1234 ? Are you connected to internet?</h1>}
           {!loading && !error && (
             <Columnizer>
-              <div style={{ marginTop: "200px", paddingTop: "200px", paddingBottom: "200px", display: "flex", flexDirection: "column", alignItems: "center" }}>
+              <div style={{ marginTop: "50px", paddingTop: "10px", paddingBottom: "200px", display: "flex", flexDirection: "column", alignItems: "center" }}>
                 {data.allArticle.map(a => {
                   return (<ArticleCard onArticleClicked={() => { setState(prev => ({ ...prev, currentArticle: a, showArticleModal: true })) }} key={a._id} article={a} />)
                 }

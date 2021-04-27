@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { SanityNotification, SanityNotificationsQuery } from '../../../../../../../sanity-types';
 import LoadingScreen from '../../../../components/LoadingScreen/LoadingScreen';
 import Columnizer from '../../../../components/Stucture/Columnizer/Columnizer';
+import FadeInTransition from '../../../../components/Transitions/FadeIn';
 import useGetChildAgeInMonths from '../../../../hooks/useGetChildAgeInMonths';
 import { GET_USER_NOTIFICATIONS } from '../../../../queries/sanity/sanityQueries';
 import Notification from '../Notification/Notification';
@@ -35,16 +36,18 @@ const NotificationContainer = ({ children }: props) => {
           fontWeight: 100
         }}
       >Notiser</h1>
-      <div style={{
-        position: "relative",
-        top: "150px"
-      }}>
-        <Columnizer>
+      <FadeInTransition trigger={true} length={300} delay={300} >
+        <div style={{
+          position: "relative",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center"
+        }}>
           {data.allNotification.map((c, i, a) => {
-            return <Notification notification={c} />
+            return <Notification key={(c as SanityNotification).externalId} notification={c} />
           })}
-        </Columnizer>
-      </div>
+        </div>
+      </FadeInTransition>
     </div>
   )
 }

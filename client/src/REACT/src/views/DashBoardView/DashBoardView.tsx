@@ -4,10 +4,12 @@ import ViewColumn from '../../components/Layout/ViewLayout/ViewColumn';
 import ViewLayoutWrapper from '../../components/Layout/ViewLayout/ViewLayoutWrapper';
 import LoadingScreen from '../../components/LoadingScreen/LoadingScreen';
 import Centralizer from '../../components/Stucture/Centralizer/Centralizer';
+import Columnizer from '../../components/Stucture/Columnizer/Columnizer';
 import FadeInTransition from '../../components/Transitions/FadeIn';
 import useCompositionColor from '../../hooks/useCompositionColor';
 import useFirebaseUsers from '../../queries/firebase/useFirebaseUsers';
 import useGetFirebaseUser from '../../queries/firebase/useGetFirebaseUser';
+import ArticlesContainer from './components/ArticlesContainer/ArticlesContainer';
 import NotificationContainer from './components/NotificationContainer/NotificationContainer';
 import UserDash from './components/UserDash/UserDash';
 import UserGreeting from './components/UserGreeting';
@@ -52,28 +54,28 @@ const DashBoardView: React.FC = () => {
             <ViewColumn widthInPercent={10} >
               <div style={{
                 position: "absolute",
+                top: "80px",
                 width: "100%",
                 height: "100%",
                 display: "flex",
-                alignItems: "center",
-                backgroundColor: useCompositionColor("grey")
+                justifyContent: "center",
               }}>
-                <UserDash userChildren={children} />
+                <div style={{
+                }}>
+                  <FadeInTransition trigger length={300} delay={0}>
+                    <UserDash userParent={user} userChildren={children} />
+                  </FadeInTransition>
+                </div>
               </div>
             </ViewColumn>
             <ViewColumn widthInPercent={30} scrollable fadeScroll>
-              <FadeInTransition trigger length={300} delay={100}>
+              <FadeInTransition trigger={children} length={300} delay={0}>
                 <NotificationContainer children={children} />
               </FadeInTransition>
             </ViewColumn>
             <ViewColumn widthInPercent={60} scrollable >
               <FadeInTransition trigger length={300} delay={600}>
-                <div
-                  style={{
-                    position: "relative",
-                    textAlign: "center"
-                  }}
-                ><h1>Articles</h1></div>
+                <ArticlesContainer userChildren={children} />
               </FadeInTransition>
             </ViewColumn>
           </>

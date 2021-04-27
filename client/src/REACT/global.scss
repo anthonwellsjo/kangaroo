@@ -35,6 +35,20 @@ p {
   font-family: 'Martel';
 }
 
+h1 {
+  font-size: 300;
+}
+
+button {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+}
+
 label {
   font-family: 'Nunito Sans';
   font-size: 0.9em;
@@ -166,16 +180,12 @@ h2.article {
   font-weight: 600;
   user-select: 'none';
   cursor: pointer;
-  font-size: .8em;
+  font-size: 0.8em;
   color: gray;
 }
 .smallSimpleTextButton:hover {
   text-decoration: underline;
 }
-
-
-
-
 
 .lds-roller {
   display: inline-block;
@@ -188,7 +198,7 @@ h2.article {
   transform-origin: 40px 40px;
 }
 .lds-roller div:after {
-  content: " ";
+  content: ' ';
   display: block;
   position: absolute;
   width: 7px;
@@ -262,3 +272,10 @@ h2.article {
   }
 }
 
+#newChildBtn,
+#newChildBtn:hover {
+  transition: all 0.3s;
+}
+#newChildBtn:hover {
+  transform: scale(1.2);
+}
