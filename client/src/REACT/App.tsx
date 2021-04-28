@@ -13,6 +13,9 @@ import { FirebaseAuthProvider } from "@react-firebase/auth";
 import { firebaseConfig } from '../../firebaseconfig';
 import DashBoardView from './src/views/DashBoardView/DashBoardView';
 import GlobalModalLayer from './src/components/GlobalModalLayer/GlobalModalLayer';
+import useGetFirebaseUser from './src/queries/firebase/useGetFirebaseUser';
+import useFirebaseUsers from './src/queries/firebase/useFirebaseUsers';
+import LoadingScreen from './src/components/LoadingScreen/LoadingScreen';
 
 const domContainer = document.getElementById('root');
 
@@ -22,6 +25,26 @@ const client = new ApolloClient({ uri: "https://8ci5beth.api.sanity.io/v1/graphq
 const App = () => {
   const [page, setPage] = useContext(PageContext);
 
+
+  //The following code checks if user is still authorized on page reload (firebase auth), then 
+  //checks for that user on the database - however this is just mock code and not safe. The way 
+  //useFirebaseUsers() and useGetFirebaseUser() works is not safe for a live app. This is logic that 
+  //should be handled on the server (for example, I'm requesting all users info and filtering it
+  //client side which is a big no no). Consider everything that lives on the firebase realtime
+  //databse to be mock only. This is logic and that later will live on a prisma graphql server and
+  //in postresQl-database.
+  
+  var user = firebase.auth().currentUser;
+  const { isPending, data, hasError, } = useFirebaseUsers();
+  if (isPending) return <LoadingScreen />
+  if (hasError) console.log("error getting users from firebase");
+  if (user) {
+    const loggedUser = useGetFirebaseUser(data, "anthon@gmail.com");
+    console.log("logged user", loggedUser)
+    if (loggedUser !== undefined && !page.user) {
+      setPage(prev => ({ ...prev, user: loggedUser }));
+    }
+  }
 
   return (
 

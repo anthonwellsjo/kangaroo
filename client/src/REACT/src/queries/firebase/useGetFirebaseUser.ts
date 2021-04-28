@@ -1,6 +1,6 @@
 import React from 'react';
 
-const useGetFirebaseUser = (data: [firebaseUser.Parent], email: string) => {
+const useGetFirebaseUser = (data: [firebaseUser.Parent], email: string): firebaseUser.Parent => {
   let user;
 
   if (data) {

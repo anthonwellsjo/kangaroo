@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 
-const useFirebaseAddChildToUser = (userId: string, child: firebaseUser.Child) => {
+const useFirebaseAddChildToUser = (userId: string, childId: "string") => {
   const [didRun, setDidRun] = useState(false);
   const [state, setState] = useState({ isPending: false, hasError: false, error: null, data: null });
   console.log("running");
@@ -10,7 +10,7 @@ const useFirebaseAddChildToUser = (userId: string, child: firebaseUser.Child) =>
       setDidRun(true);
       setState(prev => ({ ...prev, isPending: true }));
       console.log("running2");
-      axios.post(`https://kangaroo-auth-default-rtdb.europe-west1.firebasedatabase.app/users/${userId}/children.json`, child)
+      axios.delete(`https://kangaroo-auth-default-rtdb.europe-west1.firebasedatabase.app/users/${userId}/children/${childId}.json`)
         .then(res => {
           const data = res.data;
           console.log("got data", data);

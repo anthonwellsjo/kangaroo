@@ -10,7 +10,8 @@ const PageProvider: React.FC = ({ children }) => {
     showKangarooBackdrop: false,
     loginAlreadyRegisteredUser: true,
     user: null,
-    showFocusOnRegisterBackdrop: false
+    showFocusOnRegisterBackdrop: false,
+    refreshDashboardView: false
 
   });
   return (

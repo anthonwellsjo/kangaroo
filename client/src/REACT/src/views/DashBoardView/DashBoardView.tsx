@@ -1,4 +1,5 @@
 import { useSpring } from '@react-spring/core';
+import { parseValue } from 'graphql';
 import React, { useContext, useEffect, useState } from 'react';
 import ViewColumn from '../../components/Layout/ViewLayout/ViewColumn';
 import ViewLayoutWrapper from '../../components/Layout/ViewLayout/ViewLayoutWrapper';
@@ -29,7 +30,7 @@ const DashBoardView: React.FC = () => {
 
   useEffect(() => {
     setPage(prev => ({ ...prev, showFocusOnRegisterBackdrop: false, showKangarooBackdrop: false, }))
-  })
+  }, [])
 
   useEffect(() => {
     const user = useGetFirebaseUser(data, "anthon@gmail.com");
@@ -40,9 +41,16 @@ const DashBoardView: React.FC = () => {
   let children;
   if (user) {
     if (user.children) {
-      children = [...user.children];
+      children = { ...user.children };
     }
   }
+
+  useEffect(() => {
+    if (page.refreshDashboardView) {
+      location.reload();
+      setPage(prev => ({ ...prev, refreshDashboardView: false }));
+    }
+  }, [page.refreshDashboardView])
 
 
   return (

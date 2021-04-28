@@ -18,6 +18,8 @@ const client = new ApolloClient({ uri: "https://8ci5beth.api.sanity.io/v1/graphq
 
 const Index = () => {
 
+  
+
 
   return (
     <ApolloProvider client={client}>
