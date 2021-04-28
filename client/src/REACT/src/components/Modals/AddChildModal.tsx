@@ -3,6 +3,7 @@ import Centralizer from '../Stucture/Centralizer/Centralizer';
 import { useForm } from "react-hook-form";
 import Columnizer from '../Stucture/Columnizer/Columnizer';
 import { UserContext } from '../../contexts/userContext';
+import useFirebaseAddChildToUser from '../../queries/firebase/useFirebaseAddChildToUser';
 
 type Inputs = {
   name: string,
@@ -14,7 +15,7 @@ const AddChildModal: React.FC = () => {
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
   const onSubmit = () => {
     data => console.log(data);
-    
+    const { isPending: false, hasError: false, data: null } = useFirebaseAddChildToUser()
   }
 
   console.log(watch("example")); // watch input value by passing the name of it
