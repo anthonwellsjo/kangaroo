@@ -33,7 +33,7 @@ const App = () => {
   //client side which is a big no no). Consider everything that lives on the firebase realtime
   //databse to be mock only. This is logic and that later will live on a prisma graphql server and
   //in postresQl-database.
-  
+
   var user = firebase.auth().currentUser;
   const { isPending, data, hasError, } = useFirebaseUsers();
   if (isPending) return <LoadingScreen />

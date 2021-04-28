@@ -38,7 +38,7 @@ const UserDash = ({ userChildren: cn, userParent: up }: props) => {
         }}>
           {Object.keys(cn).map(k => {
             const child = cn[k] as firebaseUser.Child;
-            return <ChildProfile key={child.name + child.birthDate} child={child} />
+            return <ChildProfile key={child.name + child.birthDate} child={child} childId={k}/>
           })}
           <div style={{
 

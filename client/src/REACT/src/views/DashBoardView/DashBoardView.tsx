@@ -17,7 +17,6 @@ import UserDash from './components/UserDash/UserDash';
 import UserGreeting from './components/UserGreeting';
 
 const DashBoardView: React.FC = () => {
-
   //App-User lives on firebase for prototype-purpose, 
   //will instead be implemented with graphql-apollo-prisma-postgres backend 
   //Firebase-auth will still be used for auth.
@@ -47,6 +46,7 @@ const DashBoardView: React.FC = () => {
 
   useEffect(() => {
     if (page.refreshDashboardView) {
+      //reloads page to rerender all children of user
       location.reload();
       setPage(prev => ({ ...prev, refreshDashboardView: false }));
     }

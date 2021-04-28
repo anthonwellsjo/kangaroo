@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 
-const useFirebaseAddChildToUser = (userId: string, childId: "string") => {
+const useFirebaseDeleteChildFromUser = (userId: string, childId: string) => {
   const [didRun, setDidRun] = useState(false);
   const [state, setState] = useState({ isPending: false, hasError: false, error: null, data: null });
   console.log("running");
@@ -30,4 +30,4 @@ const useFirebaseAddChildToUser = (userId: string, childId: "string") => {
   return state;
 }
 
-export default useFirebaseAddChildToUser;
+export default useFirebaseDeleteChildFromUser;
