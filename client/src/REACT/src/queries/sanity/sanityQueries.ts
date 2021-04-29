@@ -20,6 +20,26 @@ query GetGeneralPreviewArticles {
 }
 `;
 
+export const ARTICLES_FOR_CHILD_OF_AGE = gql`
+query getArticlesForChildrenOfAge ($ageInMonths: Float) {
+  allArticle (where:{minAgeMonths:{lte: $ageInMonths}, maxAgeMonths: {gte: $ageInMonths}}) {
+    _id
+    title
+    slug {
+      current
+    }
+    articleImage {
+      asset {
+        url
+      }
+    }
+    category {
+      name
+    }
+  }
+}
+`;
+
 export const GET_FULL_ARTICLE = gql`
 query GetFullArticle($id: ID!) {
   Article(id: $id) {

@@ -5,6 +5,7 @@ import Centralizer from '../../../../components/Stucture/Centralizer/Centralizer
 import ZoomInTransition from '../../../../components/Transitions/zoomIn';
 import { useQuery } from '@apollo/client';
 import { GET_FULL_ARTICLE } from '../../../../queries/sanity/sanityQueries';
+import { Article, FullArticleData } from '../../../../../../../sanity-types';
 
 const titleStyle: CSS.Properties = {
   fontSize: ".9em",
@@ -27,7 +28,8 @@ const cardStyle: CSS.Properties = {
   margin: "20px auto 20px auto",
   overflowY: "scroll",
   boxSizing: "border-box",
-  padding: "50px"
+  padding: "50px",
+  textAlign: "justify"
 }
 
 const modalStyle: CSS.Properties = {
@@ -59,7 +61,7 @@ const ArticlePreviewModal = ({ article, onExitModal }: props) => {
           <main>
             {data.Article.overviewRaw.map(b => {
               return (
-                React.createElement(b.style, {class: "article"}, b.children[0].text)
+                React.createElement(b.style, { class: "article" }, b.children[0].text)
               )
             })}
           </main>

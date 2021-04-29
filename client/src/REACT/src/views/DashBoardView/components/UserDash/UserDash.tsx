@@ -14,7 +14,6 @@ interface props {
 const UserDash = ({ userChildren: cn, userParent: up }: props) => {
   return (
     <div style={{
-      backgroundColor: useCompositionColor("blue"),
       paddingTop: "10px",
       paddingBottom: "10px",
     }}>
@@ -36,10 +35,12 @@ const UserDash = ({ userChildren: cn, userParent: up }: props) => {
         <div style={{
           marginTop: "30px"
         }}>
-          {Object.keys(cn).map(k => {
-            const child = cn[k] as firebaseUser.Child;
-            return <ChildProfile key={child.name + child.birthDate} child={child} childId={k}/>
-          })}
+          {cn !== null && cn !== undefined ? Object.keys(cn).map(k => {
+            if (cn[k] !== null) {
+              const child = cn[k] as firebaseUser.Child;
+              return <ChildProfile key={child.name + child.birthDate} child={child} childId={k} />
+            }
+          }) : null}
           <div style={{
 
           }}>

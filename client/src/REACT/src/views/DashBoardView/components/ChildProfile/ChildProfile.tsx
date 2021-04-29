@@ -3,6 +3,8 @@ import Columnizer from '../../../../components/Stucture/Columnizer/Columnizer';
 import CSS from 'csstype';
 import FadeInTransition from '../../../../components/Transitions/FadeIn';
 import useFirebaseDeleteChildFromUser from '../../../../queries/firebase/useFirebaseDeleteChildFromUser';
+import DeleteChildTaskModal from '../../../../components/Modals/DeleteChildTaskModal/DeleteChildTaskModal';
+import useGetChildAgeInMonths from '../../../../hooks/useGetChildAgeInMonths';
 
 interface props {
   child: firebaseUser.Child,
@@ -11,7 +13,14 @@ interface props {
 
 const titleStyle: CSS.Properties = {
   marginTop: "5px",
+  fontWeight: 900,
   fontSize: "0.8em",
+  fontFamily: "Martel"
+}
+const ageStyle: CSS.Properties = {
+  marginTop: "-20px",
+  fontWeight: 500,
+  fontSize: "0.7em",
   fontFamily: "Martel"
 }
 const optionsStyle: CSS.Properties = {
@@ -26,9 +35,13 @@ const ChildProfile = ({ child, childId }: props) => {
 
   const onClickDeleteChildEventHandler = () => {
     setState(prev => ({ ...prev, deleteChildStatusModalOpen: true }));
-    // useFirebaseDeleteChildFromUser("0", childId)
+
   }
   const [state, setState] = useState({ isHovering: false, deleteChildStatusModalOpen: false });
+  const onCloseStatusModal = () => {
+    setState(prev => ({ ...prev, deleteChildStatusModalOpen: false }));
+    location.reload();
+  }
 
   return (
     <div
@@ -61,8 +74,11 @@ const ChildProfile = ({ child, childId }: props) => {
         }
         <p style={titleStyle}
         >{child.name}</p>
+        <p style={ageStyle}
+        >{useGetChildAgeInMonths(child.birthDate)}</p>
+        <p style={ageStyle}>månader</p>
       </Columnizer>
-      {state.deleteChildStatusModalOpen && <h1>Delete child modal</h1>}
+      {state.deleteChildStatusModalOpen && <DeleteChildTaskModal onClose={onCloseStatusModal} childId={childId} parentId="0" />}
     </div>
   )
 }

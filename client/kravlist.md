@@ -1,6 +1,4 @@
-Kravlista för källkodsprojektet
-Nummer	Max.Poäng	Kriterium	Beskrivning	Läranderesultat
-1	5		Ditt inlämnade arbete ska fortsätta från samma källkodsprojekt (repo) som tidigare inlämningsuppgifter. app.html ska vara uppdaterad med din vidareutvecklade prototyp	7
+
 2	5	1	Din readme.md fil ska uppdateras med korrekta instruktioner för hur din applikation ska startas och varefter efterföljande krav ska kunna testas	7
 3	3		I din källkod ska readme.md-filen under rubriken "externa bibliotek" innehålla en lista av dina installerade tredjepartsbibliotek. Förklara kort varför de används	7
 4	3	1	Readme.md ska även innehålla rubriken Tjänster där du listar och förklarar de Webb-API:er som anropas av din prototyp. - vart i koden & varför	7

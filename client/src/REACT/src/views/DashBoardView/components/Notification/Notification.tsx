@@ -4,10 +4,12 @@ import CSS from 'csstype';
 import useCompositionColor from '../../../../hooks/useCompositionColor';
 
 const cardStyle: CSS.Properties = {
-  height: "100px",
   width: "80%",
   backgroundColor: useCompositionColor("pink"),
-  margin: "10px"
+  margin: "10px",
+  boxSizing:"border-box",
+  paddingLeft:"15px",
+  paddingRight:"15px"
 }
 
 const titleStyle: CSS.Properties = {
@@ -18,7 +20,8 @@ const descStyle: CSS.Properties = {
   fontSize: ".8em",
   fontFamily: "Nanito Sans",
   textOverflow: "ellipsis",
-  whiteSpace:"pre-wrap"
+  whiteSpace:"pre-wrap",
+  textAlign:"justify"
 }
 
 interface props {
