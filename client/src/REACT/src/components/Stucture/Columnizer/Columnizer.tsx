@@ -5,7 +5,7 @@ const style: CSS.Properties = {
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
-  position: "absolute",
+  position: "relative",
   flexDirection: "column",
   top: 0,
   bottom: 0,

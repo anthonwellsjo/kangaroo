@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Greeting from './components/greeting/Greeting';
 import Centralizer from '../../components/Stucture/Centralizer/Centralizer';
 import ViewLayoutWrapper from '../../components/Layout/ViewLayout/ViewLayoutWrapper';
@@ -16,32 +16,26 @@ import "firebase/auth";
 import LogInContainer from './components/logInContainer/LogInContainer';
 import LoadingScreen from '../../components/LoadingScreen/LoadingScreen';
 import FadeInTransition from '../../components/Transitions/FadeIn';
-import UPPGIFTmodal from './components/UPPGIFTmodal';
+import { PageContext } from '../../contexts/pageContext';
+import { Article, GeneralArticlesData } from '../../../../../sanity-types';
 
 interface LandingViewState {
   showArticleModal: boolean,
   currentArticle?: Article,
-  showUPPGIFT: boolean
 }
 
 const LandingView: React.FC = () => {
-  const [state, setState] = useState<LandingViewState>({ showArticleModal: false, currentArticle: undefined, showUPPGIFT: false })
+  const [state, setState] = useState<LandingViewState>({ showArticleModal: false, currentArticle: undefined });
+  const [page, setPage] = useContext(PageContext);
 
   const { loading, error, data } = useQuery<GeneralArticlesData>(GENERAL_PREVIEW_ARTICLES);
 
-  console.log(data);
 
+  
 
-  //useeffect med tom depenency-array, vilket innebär att den bara körs en gång när komponenten mount:ar
-  useEffect(() => {
-    setTimeout(() => {
-      setState(prev => ({ ...prev, showUPPGIFT: true }))
-    }, 1500);
-  }, [])
 
   return (
     <>
-      <UPPGIFTmodal close={() => setState(prev => ({ ...prev, showUPPGIFT: false }))} show={state.showUPPGIFT} />
       <ViewLayoutWrapper>
         <ViewColumn widthInPercent={32}>
           <Centralizer>
@@ -65,7 +59,7 @@ const LandingView: React.FC = () => {
           {error && <h1>Cant reach sanity, are you on localhost:1234 ? Are you connected to internet?</h1>}
           {!loading && !error && (
             <Columnizer>
-              <div style={{ marginTop: "200px", paddingTop: "200px", paddingBottom: "200px", display: "flex", flexDirection: "column", alignItems: "center" }}>
+              <div style={{ marginTop: "50px", paddingTop: "10px", paddingBottom: "200px", display: "flex", flexDirection: "column", alignItems: "center" }}>
                 {data.allArticle.map(a => {
                   return (<ArticleCard onArticleClicked={() => { setState(prev => ({ ...prev, currentArticle: a, showArticleModal: true })) }} key={a._id} article={a} />)
                 }

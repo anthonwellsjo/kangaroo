@@ -35,6 +35,20 @@ p {
   font-family: "Martel";
 }
 
+h1 {
+  font-size: 300;
+}
+
+button {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+}
+
 label {
   font-family: "Nunito Sans";
   font-size: 0.9em;
@@ -265,6 +279,24 @@ h2.article {
   100% {
     transform: rotate(360deg);
   }
+}
+#newChildBtn,
+#newChildBtn:hover {
+  transition: all 0.3s;
+}
+
+#newChildBtn:hover {
+  transform: scale(1.2);
+}
+
+.childBtn,
+.userBtn {
+  transition: all 0.3s;
+}
+
+.childBtn:hover,
+.userBtn:hover {
+  transform: scale(1.2);
 }
 
 /*# sourceMappingURL=global.css.map */

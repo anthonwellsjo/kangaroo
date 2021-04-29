@@ -38,3 +38,34 @@ interface Block {
   markDefs: [],
   style: string
 }
+
+
+
+
+export interface Slug {
+  __typename: string;
+  current: string;
+}
+
+export interface Category {
+  __typename: string;
+  name: string;
+}
+
+export interface SanityNotification {
+  __typename: string;
+  title: string;
+  slug: Slug;
+  description: string;
+  createdOn: Date;
+  externalId: number;
+  isRegional: boolean;
+  region: string[];
+  category: Category[];
+}
+
+export interface SanityNotificationsQuery {
+  allNotification: AllNotification[];
+}
+
+

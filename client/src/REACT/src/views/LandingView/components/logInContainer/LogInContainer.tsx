@@ -39,12 +39,21 @@ const LogInContainer: React.FC = () => {
       position: "relative",
       boxShadow: "1px 1px 50px -10px grey",
       marginTop: "40px",
+      zIndex: 3,
       height: "500px", width: "300px",
       borderRadius: "20px",
       backgroundColor: useCompositionColor("orange"),
       overflow: "hidden",
       // backgroundImage: "url('https://picsum.photos/id/103/300/500')"
     }}>
+      {/* <FirebaseAuthConsumer>
+        {({ isSignedIn, user, providerId }) => {
+          console.log("firebase auth!");
+          console.log("logged in", isSignedIn, user, providerId);
+          setPage(prev => ({ ...prev, userLoggedIn: isSignedIn }));
+        }}
+      </FirebaseAuthConsumer> */}
+
       <RegisterContainer
         onOpen={openRegisterView}
       />
@@ -84,7 +93,6 @@ const LogInContainer: React.FC = () => {
       {page.loginAlreadyRegisteredUser &&
         <LoginUserContainer onOpen={openRegisterView} />
       }
-
     </div>
   )
 }

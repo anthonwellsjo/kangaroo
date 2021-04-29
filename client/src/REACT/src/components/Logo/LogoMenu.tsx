@@ -27,7 +27,7 @@ const LogoMenu: React.FC = () => {
           left: "20px",
         }}
       >
-        <img style={{ width: "80px" }} src={logo} alt="logo" />
+        {/* <img style={{ width: "80px" }} src={logo} alt="logo" /> */}
       </animated.div>
       <BackDropAnimation show={page.showKangarooBackdrop} />
       <LogoMenuContent onCloseClicked={() => setPage(prev => ({ ...prev, showKangarooBackdrop: false }))} show={page.showKangarooBackdrop} />
