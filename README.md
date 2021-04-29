@@ -8,8 +8,6 @@
 - open http://localhost:1234/index.html in your browser
 - ✨Magic ✨
 
-## Krav
-
 ## Externa bibliotek
 
 ### "@apollo/client": "^3.3.14", "graphql": "^15.5.0",
