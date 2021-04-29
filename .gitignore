@@ -6,3 +6,4 @@ client/.vscode/
 client/*/*.js
 node_modules
 
+client/src/REACT/global.css
