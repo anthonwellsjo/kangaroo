@@ -14,13 +14,12 @@
 
 ### "@apollo/client": "^3.3.14", "graphql": "^15.5.0",
 Klient för att konsumera graphQl (från sanity (där all content lever (notiser och artiklar)) -> och i framtiden från Apollo-Express-Servern som i nuläget inte används på klient-sidan)
-### "@react-firebase/auth": "^0.2.10":
+### "@react-firebase/auth": "^0.2.10", "firebase": "^8.4.0":
 För autentisering med firebase.
 ### "axios": "^0.21.1":
 För http-requests till firebase realtime server (test databas för prototyp).
 ### "csstype": "^3.0.7":
 Css-typer för typescript
-    "firebase": "^8.4.0",
 ### "@types/*":
 Alla typer till Typescript.
 ### "concurrently":
