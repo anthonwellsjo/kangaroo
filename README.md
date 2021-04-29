@@ -13,7 +13,7 @@
 ## Externa bibliotek
 
 ### "@apollo/client": "^3.3.14", "graphql": "^15.5.0",
-Klient för att konsumera graphQl (från sanity (där all content lever (notiser och artiklar)) -> och senare från Apollo-Express-Servern som i nuläget inte används på klient-sidan)
+Klient för att konsumera graphQl (från sanity (där all content lever (notiser och artiklar)) -> och i framtiden från Apollo-Express-Servern som i nuläget inte används på klient-sidan)
 ### "@react-firebase/auth": "^0.2.10":
 För autentisering med firebase.
 ### "axios": "^0.21.1":
