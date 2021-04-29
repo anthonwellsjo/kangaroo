@@ -23,7 +23,7 @@ Alla typer till Typescript.
 ### "concurrently":
 För att köra flera script samtidigt i packase.json.
 ### "react-hook-form":
-Ett paket för som föränklar användandet av forms i React.
+Ett paket för som förenklar användandet av forms i React.
 ### "react-router-dom":
 För routing i react.
 ### "react-spring": 
