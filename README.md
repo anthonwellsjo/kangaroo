@@ -2,6 +2,7 @@
 ## Installation
 
 - $git clone https://github.com/anthonwellsjo/kangaroo.git
+### Inside client/
 - npm install
 - npm build
 - npm start
