@@ -4,7 +4,7 @@
 - $git clone https://github.com/anthonwellsjo/kangaroo.git
 ### Inside client/
 - npm install
-- npm build
+- npm run build
 - npm start
 - open http://localhost:1234/index.html in your browser
 - ✨Magic ✨
