@@ -34,33 +34,47 @@ const MainLayout: React.FC = ({ children }) => {
 
 
   return (
+    <>
+      <div style={{
+        position: "absolute",
+        bottom: 0,
+        fontSize:".7em",
+        
+      }}>
+        <p>
+          Obs! För att testa funktionerna i denna prototyp:
+          1.Logga in anonymt genom att klicka på Testa Nu / Bli Medlem och registrera med facebook-loggan
+          2.Ta bort och lägg till barn med olika åldrar (högst 10 år och minst 3 månader) för att se hur innehållet på sidan uppdateras
+        </p>
+      </div>
 
-    <div style={style}>
-      {page.user && <button
-        style={{
-          zIndex:5,
-          position: "fixed",
-          top: "20px",
-          right: "200px",
-          backgroundColor: "red"
-        }}
-        onClick={onLogOutEventHandler}
-      >
-        Sign Out
+      <div style={style}>
+        {page.user && <button
+          style={{
+            zIndex: 5,
+            position: "fixed",
+            top: "20px",
+            right: "200px",
+            backgroundColor: "red"
+          }}
+          onClick={onLogOutEventHandler}
+        >
+          Sign Out
         </button>
-      }
-      <Centralizer>
-        <Frame>
-          {children}
-          {/* <Navbar /> */}
-          {/* <SiteTitle /> */}
-          <div style={{ position: "absolute", left: "20px", top: "90px", }}>
-            <Rectangle color={"orange"} height="90px" width="10px" />
-          </div>
-        </Frame>
-      </Centralizer>
-      <LogoMenu />
-    </div>
+        }
+        <Centralizer>
+          <Frame>
+            {children}
+            {/* <Navbar /> */}
+            {/* <SiteTitle /> */}
+            <div style={{ position: "absolute", left: "20px", top: "90px", }}>
+              <Rectangle color={"orange"} height="90px" width="10px" />
+            </div>
+          </Frame>
+        </Centralizer>
+        <LogoMenu />
+      </div>
+    </>
   )
 }
 
