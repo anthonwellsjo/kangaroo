@@ -6,6 +6,7 @@ import CSS from 'csstype';
 import { useHistory } from 'react-router';
 import useSlugerize from '../../../../hooks/useSlugerize';
 import useDeslugerize from '../../../../hooks/useDeslugerize';
+import { Article } from '../../../../../../../sanity-types';
 
 
 const calc = (x, y) => [-(y - window.innerHeight / 2) / 40, (x - window.innerWidth / 2) / 40, 1.01];
