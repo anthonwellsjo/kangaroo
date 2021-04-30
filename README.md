@@ -5,7 +5,7 @@
 ### Inside client/
 - npm install
 - npm run build
-- npm start
+- npm start (first start is long --- up to 2 minutes so be patient and ignore errors from react-spring)
 - open http://localhost:1234/index.html in your browser
 - ✨Magic ✨
 
