@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Frame from '../Frame/Frame';
 import CSS from 'csstype';
 import Centralizer from '../Stucture/Centralizer/Centralizer';
@@ -8,6 +8,7 @@ import Rectangle from '../Composition/Rectangle';
 import LogoMenu from '../Logo/LogoMenu';
 import { PageContext } from '../../contexts/pageContext';
 import firebase from 'firebase/app';
+import AlertHandler from '../AlertHandler/AlertHandler';
 
 const style: CSS.Properties = {
   height: "100vh",
@@ -16,6 +17,7 @@ const style: CSS.Properties = {
 
 const MainLayout: React.FC = ({ children }) => {
   const [page, setPage] = useContext(PageContext);
+  const [array, setArray] = useState<AlertItem[]>([]);
 
   const onLogOutEventHandler = () => {
     firebase.auth().signOut()
@@ -29,25 +31,19 @@ const MainLayout: React.FC = ({ children }) => {
 
   useEffect(() => {
     const user = firebase.auth().currentUser;
+    setTimeout(() => {
+      setArray(prev => ([...prev, { header: "1", text: "1", color: "red" }]));
+    }, 500)
+    setTimeout(() => {
+      setArray(prev => ([...prev, { header: "2", text: "2", color: "green" }]));
+    }, 1000)
     setPage(prev => ({ ...prev, user: user }));
   }, [])
 
 
   return (
     <>
-      <div style={{
-        position: "absolute",
-        bottom: 0,
-        fontSize:".7em",
-        
-      }}>
-        <p>
-          Obs! För att testa funktionerna i denna prototyp:
-          1.Logga in anonymt genom att klicka på Testa Nu / Bli Medlem och registrera med facebook-loggan
-          2.Ta bort och lägg till barn med olika åldrar (högst 10 år och minst 3 månader) för att se hur innehållet på sidan uppdateras
-        </p>
-      </div>
-
+      <AlertHandler color="red" setter={setArray} items={array} />
       <div style={style}>
         {page.user && <button
           style={{

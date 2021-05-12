@@ -7,7 +7,6 @@
     "build": "concurrently \" tsc \" \" sass ./src/REACT/ \" ",
     "dev": "concurrently \" tsc --watch \" \" sass --watch ./src/REACT/ \" \" parcel app.html \" ",
     "start": "concurrently \" tsc \" \" sass ./src/REACT/ \" \" parcel app.html \" "
-
   },
   "repository": {
     "type": "git",
@@ -27,6 +26,7 @@
     "csstype": "^3.0.7",
     "firebase": "^8.4.0",
     "graphql": "^15.5.0",
+    "prop-types": "^15.7.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-hook-form": "^7.0.7",
