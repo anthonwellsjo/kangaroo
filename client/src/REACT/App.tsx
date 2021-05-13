@@ -13,14 +13,11 @@ import { FirebaseAuthProvider } from "@react-firebase/auth";
 import { firebaseConfig } from '../../firebaseconfig';
 import DashBoardView from './src/views/DashBoardView/DashBoardView';
 import GlobalModalLayer from './src/components/GlobalModalLayer/GlobalModalLayer';
-import useGetFirebaseUser from './src/queries/firebase/useGetFirebaseUser';
-import useFirebaseUsers from './src/queries/firebase/useFirebaseUsers';
-import LoadingScreen from './src/components/LoadingScreen/LoadingScreen';
+
 
 const domContainer = document.getElementById('root');
 
 // This URL should be in a dotenv file but i keep it here for two reasons: private git repo and less config for classmates
-const client = new ApolloClient({ uri: "https://8ci5beth.api.sanity.io/v1/graphql/production/default", cache: new InMemoryCache() });
 
 const App = () => {
   const [page, setPage] = useContext(PageContext);
@@ -34,17 +31,21 @@ const App = () => {
   //databse to be mock only. This is logic and that later will live on a prisma graphql server and
   //in postresQl-database.
 
-  var user = firebase.auth().currentUser;
-  const { isPending, data, hasError, } = useFirebaseUsers();
-  if (isPending) return <LoadingScreen />
-  if (hasError) console.log("error getting users from firebase");
-  if (user) {
-    const loggedUser = useGetFirebaseUser(data, "anthon@gmail.com");
-    console.log("logged user", loggedUser)
-    if (loggedUser !== undefined && !page.user) {
-      setPage(prev => ({ ...prev, user: loggedUser }));
-    }
-  }
+
+  //denna kod skapar buggar V och ska göras om! -> denna ska kontrollera om användaren är auth med firebase
+  //och sedan kolla användaren mot databasen av användare
+
+  // var user = firebase.auth().currentUser;
+  // const { isPending, data, hasError, } = useFirebaseUsers();
+  // if (isPending) return <LoadingScreen />
+  // if (hasError) console.log("error getting users from firebase");
+  // if (user) {
+  //   const loggedUser = useGetFirebaseUser(data, "anthon@gmail.com");
+  //   console.log("logged user", loggedUser)
+  //   if (loggedUser !== undefined && !page.user) {
+  //     setPage(prev => ({ ...prev, user: loggedUser }));
+  //   }
+  // }
 
   return (
 

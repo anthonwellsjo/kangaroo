@@ -18,6 +18,7 @@ import LoadingScreen from '../../components/LoadingScreen/LoadingScreen';
 import FadeInTransition from '../../components/Transitions/FadeIn';
 import { PageContext } from '../../contexts/pageContext';
 import { Article, GeneralArticlesData } from '../../../../../sanity-types';
+import AlertHandler from '../../components/AlertHandler/AlertHandler.jsx';
 
 interface LandingViewState {
   showArticleModal: boolean,
@@ -31,11 +32,11 @@ const LandingView: React.FC = () => {
   const { loading, error, data } = useQuery<GeneralArticlesData>(GENERAL_PREVIEW_ARTICLES);
 
 
-  
+
 
 
   return (
-    <>
+    <>  
       <ViewLayoutWrapper>
         <ViewColumn widthInPercent={32}>
           <Centralizer>
