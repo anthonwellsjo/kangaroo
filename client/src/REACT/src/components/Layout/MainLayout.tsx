@@ -10,6 +10,7 @@ import { PageContext } from '../../contexts/pageContext';
 import firebase from 'firebase/app';
 import AlertHandler from '../AlertHandler/AlertHandler';
 import useCompositionColor from '../../hooks/useCompositionColor';
+import { AlertContext } from '../../contexts/alertContext';
 
 const style: CSS.Properties = {
   height: "100vh",
@@ -18,7 +19,7 @@ const style: CSS.Properties = {
 
 const MainLayout: React.FC = ({ children }) => {
   const [page, setPage] = useContext(PageContext);
-  const [array, setArray] = useState<AlertItem[]>([]);
+  const [alerts, setAlerts] = useContext(AlertContext);
 
   const onLogOutEventHandler = () => {
     firebase.auth().signOut()
@@ -33,13 +34,13 @@ const MainLayout: React.FC = ({ children }) => {
   useEffect(() => {
     const user = firebase.auth().currentUser;
     setTimeout(() => {
-      setArray(prev => ([...prev, { header: "Pass på!", text: "Det här är min återanvändbara komponent. Den heter AlertHandler.", color: useCompositionColor("orange") }]));
+      setAlerts(prev => ([...prev, { header: "Pass på!", text: "Det här är min återanvändbara komponent. Den heter AlertHandler.", color: useCompositionColor("orange") }]));
     }, 1000)
     setTimeout(() => {
-      setArray(prev => ([...prev, { header: "Varning!", text: "Den använder react-spring för att generera meddelanden med hooken useTransition.", color: useCompositionColor("red") }]));
+      setAlerts(prev => ([...prev, { header: "Varning!", text: "Den använder react-spring för att generera meddelanden med hooken useTransition.", color: useCompositionColor("red") }]));
     }, 4000)
     setTimeout(() => {
-      setArray(prev => ([...prev, { header: "Bra nyheter!", text: "Den tar t.ex. en prop av typen AlertItem[]. Du kan läsa dokumentationen inuti komponenten.", color: useCompositionColor("green") }]));
+      setAlerts(prev => ([...prev, { header: "Bra nyheter!", text: "Den tar t.ex. en prop av typen AlertItem[]. Du kan läsa dokumentationen inuti komponenten.", color: useCompositionColor("green") }]));
     }, 7000)
     setPage(prev => ({ ...prev, user: user }));
   }, [])
@@ -47,7 +48,7 @@ const MainLayout: React.FC = ({ children }) => {
 
   return (
     <>
-      <AlertHandler messageDelayMs={6000} setter={setArray} items={array} />
+      <AlertHandler messageDelayMs={6000} setter={setAlerts} items={alerts} />
       <div style={style}>
         {page.user && <button
           style={{

@@ -10,6 +10,7 @@ import { FirebaseAuthProvider } from "@react-firebase/auth";
 import { firebaseConfig } from '../../firebaseconfig';
 import App from './App';
 import { UserContextProvider } from './src/contexts/userContext';
+import { AlertProvider } from './src/contexts/alertContext';
 
 const domContainer = document.getElementById('root');
 
@@ -18,7 +19,7 @@ const client = new ApolloClient({ uri: "https://8ci5beth.api.sanity.io/v1/graphq
 
 const Index = () => {
 
-  
+
 
 
   return (
@@ -26,9 +27,11 @@ const Index = () => {
       <FirebaseAuthProvider {...firebaseConfig} firebase={firebase}>
         <PageProvider>
           <UserContextProvider>
-            <Router>
-              <App />
-            </Router>
+            <AlertProvider>
+              <Router>
+                <App />
+              </Router>
+            </AlertProvider>
           </UserContextProvider>
         </PageProvider>
       </FirebaseAuthProvider>

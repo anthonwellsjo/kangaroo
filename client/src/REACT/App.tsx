@@ -34,17 +34,20 @@ const App = () => {
   //databse to be mock only. This is logic and that later will live on a prisma graphql server and
   //in postresQl-database.
 
-  var user = firebase.auth().currentUser;
-  const { isPending, data, hasError, } = useFirebaseUsers();
-  if (isPending) return <LoadingScreen />
-  if (hasError) console.log("error getting users from firebase");
-  if (user) {
-    const loggedUser = useGetFirebaseUser(data, "anthon@gmail.com");
-    console.log("logged user", loggedUser)
-    if (loggedUser !== undefined && !page.user) {
-      setPage(prev => ({ ...prev, user: loggedUser }));
-    }
-  }
+  
+//denna kod skapar buggar V och ska göras om!
+
+  // var user = firebase.auth().currentUser;
+  // const { isPending, data, hasError, } = useFirebaseUsers();
+  // if (isPending) return <LoadingScreen />
+  // if (hasError) console.log("error getting users from firebase");
+  // if (user) {
+  //   const loggedUser = useGetFirebaseUser(data, "anthon@gmail.com");
+  //   console.log("logged user", loggedUser)
+  //   if (loggedUser !== undefined && !page.user) {
+  //     setPage(prev => ({ ...prev, user: loggedUser }));
+  //   }
+  // }
 
   return (
 
