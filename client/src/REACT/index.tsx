@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { ApolloProvider } from '@apollo/client/react';
-import { ApolloClient, InMemoryCache } from '@apollo/client';
 import { PageProvider } from './src/contexts/pageContext';
 import firebase from "firebase/app";
 import "firebase/auth";
@@ -11,11 +10,13 @@ import { firebaseConfig } from '../../firebaseconfig';
 import App from './App';
 import { UserContextProvider } from './src/contexts/userContext';
 import { AlertProvider } from './src/contexts/alertContext';
+import ErrorBoundary from './src/components/ErrorBoundary/ErrorBoundary.jsx';
+import {apolloClient} from './src/queries/apollo/apolloClient';
 
 const domContainer = document.getElementById('root');
 
 // This URL should be in a dotenv file but i keep it here for two reasons: private git repo and less config for classmates
-const client = new ApolloClient({ uri: "https://8ci5beth.api.sanity.io/v1/graphql/production/default", cache: new InMemoryCache() });
+
 
 const Index = () => {
 
@@ -23,13 +24,15 @@ const Index = () => {
 
 
   return (
-    <ApolloProvider client={client}>
+    <ApolloProvider client={apolloClient}>
       <FirebaseAuthProvider {...firebaseConfig} firebase={firebase}>
         <PageProvider>
           <UserContextProvider>
             <AlertProvider>
               <Router>
-                <App />
+                <ErrorBoundary>
+                  <App />
+                </ErrorBoundary>
               </Router>
             </AlertProvider>
           </UserContextProvider>
@@ -39,4 +42,4 @@ const Index = () => {
   )
 }
 
-ReactDOM.render(Index(), domContainer);
+ReactDOM.render(<Index/>, domContainer);

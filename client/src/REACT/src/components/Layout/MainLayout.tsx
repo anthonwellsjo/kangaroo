@@ -34,13 +34,13 @@ const MainLayout: React.FC = ({ children }) => {
   useEffect(() => {
     const user = firebase.auth().currentUser;
     setTimeout(() => {
-      setAlerts(prev => ([...prev, { header: "Pass på!", text: "Det här är min återanvändbara komponent. Den heter AlertHandler.", color: useCompositionColor("orange") }]));
+      setAlerts(prev => ([...prev, { header: "Pass på!", text: "Det här är min återanvändbara komponent. Den heter AlertHandler.", color: useCompositionColor("yellow") }]));
     }, 1000)
     setTimeout(() => {
       setAlerts(prev => ([...prev, { header: "Varning!", text: "Den använder react-spring för att generera meddelanden med hooken useTransition.", color: useCompositionColor("red") }]));
     }, 4000)
     setTimeout(() => {
-      setAlerts(prev => ([...prev, { header: "Bra nyheter!", text: "Den tar t.ex. en prop av typen AlertItem[]. Du kan läsa dokumentationen inuti komponenten.", color: useCompositionColor("green") }]));
+      setAlerts(prev => ([...prev, { header: "Bra nyheter!", text: "Den tar t.ex. en prop av typen AlertItem[] och kan användas i hela appen tack var Context API. Läs dokumentationen inuti komponenten.", color: useCompositionColor("green") }]));
     }, 7000)
     setPage(prev => ({ ...prev, user: user }));
   }, [])
