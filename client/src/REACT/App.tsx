@@ -13,6 +13,7 @@ import { FirebaseAuthProvider } from "@react-firebase/auth";
 import { firebaseConfig } from '../../firebaseconfig';
 import DashBoardView from './src/views/DashBoardView/DashBoardView';
 import GlobalModalLayer from './src/components/GlobalModalLayer/GlobalModalLayer';
+import LoadingScreen from './src/components/LoadingScreen/LoadingScreen';
 
 
 const domContainer = document.getElementById('root');
@@ -35,17 +36,17 @@ const App = () => {
   //denna kod skapar buggar V och ska göras om! -> denna ska kontrollera om användaren är auth med firebase
   //och sedan kolla användaren mot databasen av användare
 
-  // var user = firebase.auth().currentUser;
-  // const { isPending, data, hasError, } = useFirebaseUsers();
-  // if (isPending) return <LoadingScreen />
-  // if (hasError) console.log("error getting users from firebase");
-  // if (user) {
-  //   const loggedUser = useGetFirebaseUser(data, "anthon@gmail.com");
-  //   console.log("logged user", loggedUser)
-  //   if (loggedUser !== undefined && !page.user) {
-  //     setPage(prev => ({ ...prev, user: loggedUser }));
-  //   }
-  // }
+  var user = firebase.auth().currentUser;
+  const { isPending, data, hasError, } = useFirebaseUsers();
+  if (isPending) return <LoadingScreen />
+  if (hasError) console.log("error getting users from firebase");
+  if (user) {
+    const loggedUser = useGetFirebaseUser(data, "anthon@gmail.com");
+    console.log("logged user", loggedUser)
+    if (loggedUser !== undefined && !page.user) {
+      setPage(prev => ({ ...prev, user: loggedUser }));
+    }
+  }
 
   return (
 

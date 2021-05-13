@@ -6,14 +6,9 @@ import express from 'express';
 import 'reflect-metadata';
 import { buildSchema, Query, Resolver } from 'type-graphql'
 import User from './entities/user';
+import UserResolver from './resolvers/userResolver';
 
-@Resolver()
-class getAllUsers {
-  @Query(() => [User])
-  async getAllUsers() {
-    return (await context.prisma.user.findMany({ include: { children: true } }));
-  }
-}
+
 
 
 
@@ -23,7 +18,7 @@ const prisma = new PrismaClient();
 
 const main = async () => {
   const schema = await buildSchema({
-    resolvers: [getAllUsers]
+    resolvers: [UserResolver]
   })
   const apolloServer = new ApolloServer({ schema });
   const app = express();

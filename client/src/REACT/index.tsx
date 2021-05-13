@@ -11,7 +11,7 @@ import App from './App';
 import { UserContextProvider } from './src/contexts/userContext';
 import { AlertProvider } from './src/contexts/alertContext';
 import ErrorBoundary from './src/components/ErrorBoundary/ErrorBoundary.jsx';
-import {apolloClient} from './src/queries/apollo/apolloClient';
+import {apolloSanityClient} from './src/queries/apollo/apolloClients';
 
 const domContainer = document.getElementById('root');
 
@@ -24,7 +24,7 @@ const Index = () => {
 
 
   return (
-    <ApolloProvider client={apolloClient}>
+    <ApolloProvider client={apolloSanityClient}>
       <FirebaseAuthProvider {...firebaseConfig} firebase={firebase}>
         <PageProvider>
           <UserContextProvider>
