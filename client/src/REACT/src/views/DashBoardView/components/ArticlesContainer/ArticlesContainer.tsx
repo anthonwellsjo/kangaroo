@@ -1,8 +1,9 @@
 import { useQuery } from '@apollo/client';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Article, GeneralArticlesData } from '../../../../../../../sanity-types';
 import LoadingScreen from '../../../../components/LoadingScreen/LoadingScreen';
 import Columnizer from '../../../../components/Stucture/Columnizer/Columnizer';
+import { PageContext } from '../../../../contexts/pageContext';
 import useGetChildAgeInMonths from '../../../../hooks/useGetChildAgeInMonths';
 import { ARTICLES_FOR_CHILD_OF_AGE } from '../../../../queries/sanity/sanityQueries';
 import ArticleCard from '../../../LandingView/components/articleCard/articleCard';
@@ -13,13 +14,9 @@ interface props {
   ageArray: number[]
 }
 
-interface stateType {
-  showArticleModal: boolean,
-  currentArticle: Article | undefined
-}
 
 const ArticlesContainer = ({ userChildren: uc, ageArray }: props) => {
-  const [state, setState] = useState<stateType>({ showArticleModal: false, currentArticle: undefined })
+  const [page, setPage] = useContext(PageContext);
   console.log("User children", uc);
 
   const age = useGetChildAgeInMonths(uc[Object.keys(uc)[0]].birthDate);
@@ -42,16 +39,14 @@ const ArticlesContainer = ({ userChildren: uc, ageArray }: props) => {
         <Columnizer>
           <div style={{ marginTop: "-20px", paddingBottom: "200px", display: "flex", flexDirection: "column", alignItems: "center" }}>
             {data.allArticle.map(a => {
-              return (<ArticleCard onArticleClicked={() => { setState(prev => ({ ...prev, currentArticle: a, showArticleModal: true })) }} key={a._id} article={a} />)
+              return (<ArticleCard onArticleClicked={() => { setPage(prev => ({ ...prev, currentArticle: a, showArticleModal: true })) }} key={a._id} article={a} />)
             }
             )}
           </div>
         </Columnizer>
       )
       }
-      {state.showArticleModal && state.currentArticle &&
-        <ArticlePreviewModal article={state.currentArticle} onExitModal={() => setState(prev => ({ ...prev, showArticleModal: false }))} />
-      }
+      
     </div>
   )
 }

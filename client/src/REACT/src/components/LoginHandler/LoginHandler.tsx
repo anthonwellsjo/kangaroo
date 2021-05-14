@@ -23,6 +23,7 @@ const LoginHandler = ({ firebaseUser }: props) => {
   const { loading, error, data } = useQuery<databaseUser.GetUserWithEmailData>(GET_USER_WITH_EMAIL, { variables: { email: firebaseUser.isAnonymous ? "alice@prisma.io" : firebaseUser.email }, client: apolloDbClient });
   useEffect(() => {
     if (data) {
+      console.log("setting user", data.getUserWithEmail);
       setUser(prev => ({ ...prev, loggedInUser: data.getUserWithEmail }));
       setPage(prev=>({...prev, user: firebaseUser}));
       const alertItem: AlertItem = { header: `Hej ${data.getUserWithEmail.name}!`, text: "Välkommen till Kangaroo! Du är inloggad och klar att börja surfa.", color: useCompositionColor("green") }

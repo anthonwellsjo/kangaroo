@@ -14,12 +14,14 @@ import { firebaseConfig } from '../../firebaseconfig';
 import DashBoardView from './src/views/DashBoardView/DashBoardView';
 import GlobalModalLayer from './src/components/GlobalModalLayer/GlobalModalLayer';
 import AuthorizationLayer from './src/components/AuthorizationLayer/AuthorizationLayer';
+import { UserContext } from './src/contexts/userContext';
 
 
 const domContainer = document.getElementById('root');
 
 const App = () => {
   const [page, setPage] = useContext(PageContext);
+  const [user, setUser] = useContext(UserContext);
 
 
 
@@ -30,12 +32,12 @@ const App = () => {
           <Switch>
             <Route path="/category/:catName" component={CategoryView} />
             <Route exact path="/">
-              {page.user ?
+              {page.user && user.loggedInUser ?
                 <Redirect to={`/dashboard/${(page.user as firebase.User).uid}`} /> :
                 <LandingView />}
             </Route>
             <Route path="/dashboard/">
-              {page.user ?
+              {page.user && user.loggedInUser ?
                 <DashBoardView /> :
                 <Redirect to={`/`} />}
             </Route>

@@ -6,6 +6,7 @@ import Rectangle from '../Composition/Rectangle';
 import LogoMenu from '../Logo/LogoMenu';
 import { PageContext } from '../../contexts/pageContext';
 import firebase from 'firebase/app';
+import { UserContext } from '../../contexts/userContext';
 
 const style: CSS.Properties = {
   height: "100vh",
@@ -14,11 +15,13 @@ const style: CSS.Properties = {
 
 const MainLayout: React.FC = ({ children }) => {
   const [page, setPage] = useContext(PageContext);
+  const [user, setUser] = useContext(UserContext);
 
   const onLogOutEventHandler = () => {
     firebase.auth().signOut()
       .then(() => {
-        setPage(prev => ({ ...prev, user: firebase.auth().currentUser }));
+        setPage(prev => ({ ...prev, user: null }));
+        setUser(prev=>({...prev, loggedInUser: null}))
       })
       .catch(err => console.log(err))
 

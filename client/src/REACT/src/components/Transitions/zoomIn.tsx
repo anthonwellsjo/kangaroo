@@ -16,8 +16,8 @@ const ZoomInTransition = ({ children, trigger, delay }: props) => {
     delay: delay > 0 ? delay : 0,
     config: {
       mass: 1,
-      tension: 200,
-      friction: 30
+      tension: 400,
+      friction: 40
     }
   })
 

@@ -11,5 +11,5 @@ export default class Child {
   @Field()
   name!: string;
   @Field()
-  birthDate!: string;
+  birthDate!: Date;
 }

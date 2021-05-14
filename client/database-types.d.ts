@@ -6,7 +6,7 @@ declare module databaseUser {
   }
 
   export interface Parent {
-    children: Child[];
+    children: [Child];
     email: string;
     name: string;
   }

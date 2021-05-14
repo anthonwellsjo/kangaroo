@@ -11,8 +11,9 @@ const PageProvider: React.FC = ({ children }) => {
     loginAlreadyRegisteredUser: true,
     databaseUser: null,
     showFocusOnRegisterBackdrop: false,
-    refreshDashboardView: false
-
+    refreshDashboardView: false,
+    showArticleModal: false, 
+    currentArticle: undefined
   });
   return (
     <PageContext.Provider value={[page, setPage]}>

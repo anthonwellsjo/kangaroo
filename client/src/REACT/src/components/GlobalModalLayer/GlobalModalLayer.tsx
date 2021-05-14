@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { PageContext } from '../../contexts/pageContext';
 import { UserContext } from '../../contexts/userContext';
+import ArticlePreviewModal from '../../views/LandingView/components/articlePreviewModal/ArticlePreviewModal';
 import AddChildModal from '../Modals/AddChildModal';
 import FocusOnRegisterBackdrop from '../Modals/FocusOnRegisterBackdrop';
 import FadeInTransition from '../Transitions/FadeIn';
@@ -21,6 +22,9 @@ const GlobalModalLayer: React.FC = ({ children }) => {
           <FocusOnRegisterBackdrop />
         </FadeInTransition>
       )}
+      {page.showArticleModal && page.currentArticle &&
+        <ArticlePreviewModal article={page.currentArticle} onExitModal={() => setPage(prev => ({ ...prev, showArticleModal: false }))} />
+      }
     </div>
   )
 }

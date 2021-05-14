@@ -3,7 +3,9 @@ interface PageContextData {
   loginAlreadyRegisteredUser: boolean,
   databaseUser: firebase.User | null,
   showFocusOnRegisterBackdrop: boolean,
-  refreshDashboardView: boolean
+  refreshDashboardView: boolean,
+  showArticleModal: boolean,
+  currentArticle: Article | undefined
 }
 
 interface UserContextData {
