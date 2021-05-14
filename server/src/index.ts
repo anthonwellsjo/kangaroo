@@ -7,6 +7,7 @@ import 'reflect-metadata';
 import { buildSchema, Query, Resolver } from 'type-graphql'
 import User from './entities/user';
 import UserResolver from './resolvers/userResolver';
+import cors from 'cors';
 
 
 
@@ -22,6 +23,7 @@ const main = async () => {
   })
   const apolloServer = new ApolloServer({ schema });
   const app = express();
+  app.use(cors());
   apolloServer.applyMiddleware({ app });
   app.listen(4000, () => {
     console.log(`\

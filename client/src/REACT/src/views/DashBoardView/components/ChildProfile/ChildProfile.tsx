@@ -7,7 +7,7 @@ import DeleteChildTaskModal from '../../../../components/Modals/DeleteChildTaskM
 import useGetChildAgeInMonths from '../../../../hooks/useGetChildAgeInMonths';
 
 interface props {
-  child: firebaseUser.Child,
+  child: databaseUser.Child,
   childId: string
 }
 

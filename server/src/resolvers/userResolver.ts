@@ -1,5 +1,5 @@
 import 'reflect-metadata';
-import { Query, Resolver } from 'type-graphql';
+import { Arg, Query, Resolver } from 'type-graphql';
 import { context } from '../context';
 import User from '../entities/user';
 
@@ -8,5 +8,9 @@ export default class UserResolver {
   @Query(returns => [User])
   async getAllUsers() {
     return (await context.prisma.user.findMany({ include: { children: true } }));
+  }
+  @Query(returns => User)
+  async getUserWithEmail(@Arg("email") email: string) {
+    return (await context.prisma.user.findFirst({ where:{email:{equals: email}}, include:{children: true}}));
   }
 }

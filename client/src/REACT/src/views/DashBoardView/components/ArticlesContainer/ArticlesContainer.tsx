@@ -9,7 +9,7 @@ import ArticleCard from '../../../LandingView/components/articleCard/articleCard
 import ArticlePreviewModal from '../../../LandingView/components/articlePreviewModal/ArticlePreviewModal';
 
 interface props {
-  userChildren: [firebaseUser.Child],
+  userChildren: [databaseUser.Child],
   ageArray: number[]
 }
 

@@ -23,7 +23,7 @@ const DashBoardView: React.FC = () => {
   //will instead be implemented with graphql-apollo-prisma-postgres backend 
   //Firebase-auth will still be used for auth.
 
-  const [user, setUser] = useState<null | firebaseUser.Parent>(null)
+  const [user, setUser] = useState<null | databaseUser.Parent>(null)
   const [page, setPage] = useContext(PageContext);
   const [state, setState] = useState<{ childAgesInMonths: number[] | null }>({ childAgesInMonths: null });
 
@@ -31,7 +31,7 @@ const DashBoardView: React.FC = () => {
     if (user != null) {
       if (user.children != null) {
         console.log("logging children", user.children)
-        const filteredAges = useGetAgesInMonthsOfChildren(user.children as [firebaseUser.Child]);
+        const filteredAges = useGetAgesInMonthsOfChildren(user.children as [databaseUser.Child]);
         setState(prev => ({ ...prev, childAgesInMonths: filteredAges }));
       }
     }

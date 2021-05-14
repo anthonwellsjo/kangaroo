@@ -9,7 +9,7 @@ const PageProvider: React.FC = ({ children }) => {
   const [page, setPage] = useState<PageContextData>({
     showKangarooBackdrop: false,
     loginAlreadyRegisteredUser: true,
-    user: null,
+    databaseUser: null,
     showFocusOnRegisterBackdrop: false,
     refreshDashboardView: false
 

@@ -2,15 +2,10 @@ import React, { useContext, useEffect, useState } from 'react';
 import Frame from '../Frame/Frame';
 import CSS from 'csstype';
 import Centralizer from '../Stucture/Centralizer/Centralizer';
-import Navbar from '../Navbar/Navbar';
-import SiteTitle from '../SiteTitle/SiteTitle';
 import Rectangle from '../Composition/Rectangle';
 import LogoMenu from '../Logo/LogoMenu';
 import { PageContext } from '../../contexts/pageContext';
 import firebase from 'firebase/app';
-import AlertHandler from '../AlertHandler/AlertHandler';
-import useCompositionColor from '../../hooks/useCompositionColor';
-import { AlertContext } from '../../contexts/alertContext';
 
 const style: CSS.Properties = {
   height: "100vh",

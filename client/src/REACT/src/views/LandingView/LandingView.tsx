@@ -10,15 +10,11 @@ import ArticleCard from './components/articleCard/articleCard';
 import ArticlePreviewModal from './components/articlePreviewModal/ArticlePreviewModal';
 import RegisterButton from './components/registerButton/RegisterButton';
 import Columnizer from '../../components/Stucture/Columnizer/Columnizer';
-import { FirebaseAuthConsumer } from '@react-firebase/auth';
-import firebase from "firebase/app";
 import "firebase/auth";
 import LogInContainer from './components/logInContainer/LogInContainer';
 import LoadingScreen from '../../components/LoadingScreen/LoadingScreen';
 import FadeInTransition from '../../components/Transitions/FadeIn';
-import { PageContext } from '../../contexts/pageContext';
 import { Article, GeneralArticlesData } from '../../../../../sanity-types';
-import AlertHandler from '../../components/AlertHandler/AlertHandler.jsx';
 
 interface LandingViewState {
   showArticleModal: boolean,
@@ -27,7 +23,6 @@ interface LandingViewState {
 
 const LandingView: React.FC = () => {
   const [state, setState] = useState<LandingViewState>({ showArticleModal: false, currentArticle: undefined });
-  const [page, setPage] = useContext(PageContext);
 
   const { loading, error, data } = useQuery<GeneralArticlesData>(GENERAL_PREVIEW_ARTICLES);
 

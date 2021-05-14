@@ -11,7 +11,7 @@ import App from './App';
 import { UserContextProvider } from './src/contexts/userContext';
 import { AlertProvider } from './src/contexts/alertContext';
 import ErrorBoundary from './src/components/ErrorBoundary/ErrorBoundary.jsx';
-import {apolloSanityClient} from './src/queries/apollo/apolloClients';
+import { apolloSanityClient } from './src/queries/apollo/apolloClients';
 
 const domContainer = document.getElementById('root');
 
@@ -42,4 +42,4 @@ const Index = () => {
   )
 }
 
-ReactDOM.render(<Index/>, domContainer);
+ReactDOM.render(<Index />, domContainer);

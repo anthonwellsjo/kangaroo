@@ -2,7 +2,7 @@ import React from 'react';
 import useCompositionColor from '../../../hooks/useCompositionColor';
 
 interface props {
-  user: firebaseUser.Parent
+  user: databaseUser.Parent
 }
 
 const UserGreeting = ({ user }: props) => {

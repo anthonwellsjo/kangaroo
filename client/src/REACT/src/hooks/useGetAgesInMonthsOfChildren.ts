@@ -1,7 +1,7 @@
 import React from 'react';
 import useGetChildAgeInMonths from './useGetChildAgeInMonths';
 
-const useGetAgesInMonthsOfChildren = (children: [firebaseUser.Child]) : number[] => {
+const useGetAgesInMonthsOfChildren = (children: [databaseUser.Child]) : number[] => {
 
   const ageArray = Object.keys(children).map(c => {
     if (children[c] !== undefined && children[c] !== null) {

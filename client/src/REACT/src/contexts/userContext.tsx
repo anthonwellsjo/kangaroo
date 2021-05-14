@@ -7,7 +7,8 @@ const UserContext = createContext([user, setUser])
 
 const UserContextProvider: React.FC = ({ children }) => {
   const [user, setUser] = useState<UserContextData>({
-    showNewChildModal: false
+    showNewChildModal: false,
+    loggedInUser: null
 
   });
   return (

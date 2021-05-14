@@ -1,10 +1,10 @@
 import React from 'react';
 
-const useGetFirebaseUser = (data: [firebaseUser.Parent], email: string): firebaseUser.Parent => {
+const useGetFirebaseUser = (data: [databaseUser.Parent], email: string): databaseUser.Parent => {
   let user;
 
   if (data) {
-    (data as [firebaseUser.Parent]).forEach(p => {
+    (data as [databaseUser.Parent]).forEach(p => {
       console.log(p);
       if (p.email == email) {
         console.log("found it!", p.email, email);

@@ -1,11 +1,13 @@
 interface PageContextData {
   showKangarooBackdrop: boolean,
   loginAlreadyRegisteredUser: boolean,
-  user: firebase.User | null,
+  databaseUser: firebase.User | null,
   showFocusOnRegisterBackdrop: boolean,
   refreshDashboardView: boolean
 }
 
 interface UserContextData {
-  showNewChildModal: boolean
+  showNewChildModal: boolean,
+  loggedInUser: databaseUser.Parent | null
 }
+

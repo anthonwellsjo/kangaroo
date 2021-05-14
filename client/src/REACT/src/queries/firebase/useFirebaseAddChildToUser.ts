@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 
-const useFirebaseAddChildToUser = (userId: string, child: firebaseUser.Child) => {
+const useFirebaseAddChildToUser = (userId: string, child: databaseUser.Child) => {
   const [didRun, setDidRun] = useState(false);
   const [state, setState] = useState({ isPending: false, hasError: false, error: null, data: null });
   console.log("running");

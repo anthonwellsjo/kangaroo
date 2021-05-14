@@ -7,8 +7,8 @@ import NewChildButton from '../NewChildButton/NewChildButton';
 import User from '../User/User';
 
 interface props {
-  userChildren: [firebaseUser.Child],
-  userParent: firebaseUser.Parent
+  userChildren: [databaseUser.Child],
+  userParent: databaseUser.Parent
 }
 
 const UserDash = ({ userChildren: cn, userParent: up }: props) => {
@@ -37,7 +37,7 @@ const UserDash = ({ userChildren: cn, userParent: up }: props) => {
         }}>
           {cn !== null && cn !== undefined ? Object.keys(cn).map(k => {
             if (cn[k] !== null) {
-              const child = cn[k] as firebaseUser.Child;
+              const child = cn[k] as databaseUser.Child;
               return <ChildProfile key={child.name + child.birthDate} child={child} childId={k} />
             }
           }) : null}

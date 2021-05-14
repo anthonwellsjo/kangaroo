@@ -10,7 +10,7 @@ import { GET_USER_NOTIFICATIONS } from '../../../../queries/sanity/sanityQueries
 import Notification from '../Notification/Notification';
 
 interface props {
-  children: [firebaseUser.Child] | null,
+  children: [databaseUser.Child] | null,
   ageArray: number[] | null
 
 }

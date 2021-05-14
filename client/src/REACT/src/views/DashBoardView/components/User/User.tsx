@@ -3,7 +3,7 @@ import CSS from 'csstype';
 import Columnizer from '../../../../components/Stucture/Columnizer/Columnizer';
 
 interface props {
-  parent: firebaseUser.Parent
+  parent: databaseUser.Parent
 }
 
 const titleStyle: CSS.Properties = {
