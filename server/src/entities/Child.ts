@@ -12,4 +12,6 @@ export default class Child {
   name!: string;
   @Field()
   birthDate!: Date;
+  @Field(type => ID)
+  parentId!: number;
 }

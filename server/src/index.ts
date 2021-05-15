@@ -8,6 +8,7 @@ import { buildSchema, Query, Resolver } from 'type-graphql'
 import User from './entities/user';
 import UserResolver from './resolvers/userResolver';
 import cors from 'cors';
+import ChildResolver from './resolvers/childResolver';
 
 
 
@@ -19,7 +20,7 @@ const prisma = new PrismaClient();
 
 const main = async () => {
   const schema = await buildSchema({
-    resolvers: [UserResolver]
+    resolvers: [UserResolver, ChildResolver]
   })
   const apolloServer = new ApolloServer({ schema });
   const app = express();

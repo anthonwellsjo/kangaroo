@@ -5,18 +5,17 @@ import Child from '../entities/child';
 import { CreateChildInput } from '../input/createChildInput';
 
 @Resolver(of => Child)
-export class ChildResolver {
+export default class ChildResolver {
   @Mutation(returns => Child)
   async addChild(@Arg("child") childInput: CreateChildInput): Promise<Child> {
+    console.log(childInput);
     const child = Object.assign(new Child(), {
-      id:1,
       name: childInput.name,
       birthDate: childInput.birthDate,
-      createdAt: new Date(),
-      updatedAt: new Date(),
+      parentId: childInput.parentId
     });
-    await context.prisma.child.create({data: child})
+    await context.prisma.child.create({data: childInput})
     return child;
   }
-  
+
 }
