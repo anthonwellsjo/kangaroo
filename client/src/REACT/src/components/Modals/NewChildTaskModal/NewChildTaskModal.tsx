@@ -1,24 +1,37 @@
-import React from 'react';
-import useFirebaseAddChildToUser from '../../../queries/firebase/useFirebaseAddChildToUser';
+import { useMutation } from '@apollo/client';
+import React, { useContext, useEffect } from 'react';
+import { AlertContext } from '../../../contexts/alertContext';
+import useCompositionColor from '../../../hooks/useCompositionColor';
+import { apolloDbClient } from '../../../queries/apollo/apolloClients';
+import { CREATE_CHILD } from '../../../queries/database/databaseQueries';
 import LoadingScreen from '../../LoadingScreen/LoadingScreen';
 import Centralizer from '../../Stucture/Centralizer/Centralizer';
 import Columnizer from '../../Stucture/Columnizer/Columnizer';
 
 interface props {
-  data: {
-    name: string,
-    birthDate: string
-  } | null,
+  data: databaseUser.CreateChildInput | null,
   onCloseClicked: () => void
 }
 
 const NewChildTaskModal = ({ data, onCloseClicked }: props) => {
+  const [alerts, setAlerts] = useContext(AlertContext);
+  const [createChild, { data: responseData, loading, error }] = useMutation<databaseUser.AddChildData>(CREATE_CHILD, { client: apolloDbClient });
+  console.log("sending data", data);
 
-  const { isPending, hasError, error, data: restData } = useFirebaseAddChildToUser("0", data);
+  useEffect(() => {
+    createChild({ variables: { child: { name: data.name, birthDate: new Date(data.birthDate), parentId: data.parentId } } });
+  }, [])
 
-  if (isPending) return <LoadingScreen />
-  if (error) console.log(error);
-  console.log(restData)
+  useEffect(() => {
+    if (error) {
+      const item: AlertItem = { header: "Fel!", text: "Någonting blev fel. Vänligen försök igen...", color: useCompositionColor("red") };
+      setAlerts(prev => ([...prev, item]));
+    }
+    if (responseData) {
+      const item: AlertItem = { header: "Fantastiskt!", text: `${responseData.addChild.name} har nu lagts till som ditt barn.`, color: useCompositionColor("green") };
+      setAlerts(prev => ([...prev, item]));
+    }
+  }, [error, responseData])
 
 
   return (
@@ -36,9 +49,9 @@ const NewChildTaskModal = ({ data, onCloseClicked }: props) => {
         <div style={{
           padding: "50px"
         }}>
-          {isPending && <LoadingScreen />}
-          {hasError && <h1>error</h1>}
-          {restData && (
+          {loading && <LoadingScreen />}
+          {error && <h1>error</h1>}
+          {responseData && (
             <div
               style={{
                 position: "relative",

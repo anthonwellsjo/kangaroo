@@ -38,7 +38,7 @@ const UserDash = ({ userChildren: cn, userParent: up }: props) => {
           {cn !== null && cn !== undefined ? Object.keys(cn).map(k => {
             if (cn[k] !== null) {
               const child = cn[k] as databaseUser.Child;
-              return <ChildProfile key={child.name + child.birthDate} child={child} childId={k} />
+              return <ChildProfile key={child.name + child.birthDate} child={child}/>
             }
           }) : null}
           <div style={{

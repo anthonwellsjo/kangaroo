@@ -7,8 +7,7 @@ import DeleteChildTaskModal from '../../../../components/Modals/DeleteChildTaskM
 import useGetChildAgeInMonths from '../../../../hooks/useGetChildAgeInMonths';
 
 interface props {
-  child: databaseUser.Child,
-  childId: string
+  child: databaseUser.Child
 }
 
 const titleStyle: CSS.Properties = {
@@ -31,7 +30,7 @@ const optionsStyle: CSS.Properties = {
   position: "absolute",
 }
 
-const ChildProfile = ({ child, childId }: props) => {
+const ChildProfile = ({ child }: props) => {
 
   const onClickDeleteChildEventHandler = () => {
     setState(prev => ({ ...prev, deleteChildStatusModalOpen: true }));
@@ -78,7 +77,7 @@ const ChildProfile = ({ child, childId }: props) => {
         >{useGetChildAgeInMonths(child.birthDate)}</p>
         <p style={ageStyle}>månader</p>
       </Columnizer>
-      {state.deleteChildStatusModalOpen && <DeleteChildTaskModal onClose={onCloseStatusModal} childId={childId} parentId="0" />}
+      {state.deleteChildStatusModalOpen && <DeleteChildTaskModal onClose={onCloseStatusModal} childId={parseInt(child.id)} />}
     </div>
   )
 }

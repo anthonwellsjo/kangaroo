@@ -3,8 +3,6 @@ import Centralizer from '../Stucture/Centralizer/Centralizer';
 import { useForm } from "react-hook-form";
 import Columnizer from '../Stucture/Columnizer/Columnizer';
 import { UserContext } from '../../contexts/userContext';
-import useFirebaseAddChildToUser from '../../queries/firebase/useFirebaseAddChildToUser';
-import WorkTaskModal from './WorkTaskModal';
 import NewChildTaskModal from './NewChildTaskModal/NewChildTaskModal';
 import { PageContext } from '../../contexts/pageContext';
 
@@ -15,12 +13,13 @@ type Inputs = {
 
 const AddChildModal: React.FC = () => {
   const [user, setUser] = useContext(UserContext);
-  const [state, setState] = useState({ saveChildTaskModalOpen: false, dataToSave: null })
+  
+  const [state, setState] = useState<{ saveChildTaskModalOpen: boolean, dataToSave: databaseUser.CreateChildInput }>({ saveChildTaskModalOpen: false, dataToSave: null })
   const [page, setPage] = useContext(PageContext);
   const { register, handleSubmit, formState: { errors }, reset: resetForm } = useForm<Inputs>();
 
   const onSubmit = (data) => {
-    console.log(data);
+    console.log("submitting data", data);
     setState(prev => ({ ...prev, dataToSave: data, saveChildTaskModalOpen: true }));
   }
 
@@ -28,6 +27,7 @@ const AddChildModal: React.FC = () => {
     if (state.saveChildTaskModalOpen == true) { resetForm() }
   }, [state.saveChildTaskModalOpen])
 
+  
 
   return (
     <div
@@ -81,7 +81,7 @@ const AddChildModal: React.FC = () => {
           </div>
         </div>
       </Centralizer>
-      {state.saveChildTaskModalOpen && <NewChildTaskModal onCloseClicked={() => setState(prev => ({ ...prev, saveChildTaskModalOpen: false }))} data={state.dataToSave} />}
+      {state.saveChildTaskModalOpen && <NewChildTaskModal onCloseClicked={() => setState(prev => ({ ...prev, saveChildTaskModalOpen: false }))} data={{ ...state.dataToSave, parentId: parseInt((user.loggedInUser as databaseUser.Parent).id) }} />}
 
     </div>
   )

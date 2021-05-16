@@ -6,9 +6,9 @@ export default class User {
   @Field(type => ID)
   id!: number;
   @Field()
-  createdAt!: string;
+  createdAt!: Date;
   @Field()
-  updatedAt!: string;
+  updatedAt!: Date;
   @Field()
   email!: string;
   @Field()

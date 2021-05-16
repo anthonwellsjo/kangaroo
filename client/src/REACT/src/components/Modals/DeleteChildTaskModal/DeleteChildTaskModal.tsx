@@ -1,21 +1,43 @@
-import React from 'react';
-import useFirebaseDeleteChildFromUser from '../../../queries/firebase/useFirebaseDeleteChildFromUser';
+import { useMutation } from '@apollo/client';
+import React, { useContext, useEffect } from 'react';
+import { AlertContext } from '../../../contexts/alertContext';
+import useCompositionColor from '../../../hooks/useCompositionColor';
+import { apolloDbClient } from '../../../queries/apollo/apolloClients';
+import { DELETE_CHILD } from '../../../queries/database/databaseQueries';
 import LoadingScreen from '../../LoadingScreen/LoadingScreen';
 import Centralizer from '../../Stucture/Centralizer/Centralizer';
 import Columnizer from '../../Stucture/Columnizer/Columnizer';
 
 interface props {
-  childId: string,
-  parentId: string,
+  childId: number,
   onClose: () => void
 }
 
-const DeleteChildTaskModal = ({ childId, parentId, onClose }: props) => {
+const DeleteChildTaskModal = ({ childId, onClose }: props) => {
+  const [alerts, setAlerts] = useContext(AlertContext);
+  const [deleteChild, { data: responseData, loading, error }] = useMutation(DELETE_CHILD, { client: apolloDbClient });
 
-  const { isPending, hasError, error, data } = useFirebaseDeleteChildFromUser(parentId, childId)
+  useEffect(() => {
+    console.log("removing child", childId);
+    deleteChild({ variables: { id: 100 } });
+    deleteChild({ variables: { id: childId } });
+    deleteChild({ variables: { id: "100" } });
+  }, [])
 
-  if (isPending) return <LoadingScreen />
-  if (hasError) return <h1>Error</h1>
+  useEffect(() => {
+    if (error) {
+      console.log("delete error", error);
+      const item: AlertItem = { header: "Fel!", text: "Någonting blev fel. Vänligen försök igen...", color: useCompositionColor("red") };
+      setAlerts(prev => ([...prev, item]));
+    }
+    if (responseData) {
+      const item: AlertItem = { header: "Det gick bra.", text: `Barnet har nu tagits bort.`, color: useCompositionColor("green") };
+      setAlerts(prev => ([...prev, item]));
+    }
+  }, [error, responseData])
+
+  if (loading) return <LoadingScreen />
+
 
   return (
     <div

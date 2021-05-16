@@ -8,13 +8,22 @@ import { CreateChildInput } from '../input/createChildInput';
 export default class ChildResolver {
   @Mutation(returns => Child)
   async addChild(@Arg("child") childInput: CreateChildInput): Promise<Child> {
-    console.log(childInput);
+    console.log("Adding child", childInput);
     const child = Object.assign(new Child(), {
       name: childInput.name,
       birthDate: childInput.birthDate,
       parentId: childInput.parentId
     });
-    await context.prisma.child.create({data: childInput})
+    await context.prisma.child.create({ data: childInput })
+    console.log("Returning new child", child);
+    return child;
+  }
+
+  @Mutation(returns => Child)
+  async removeChild(@Arg("id") id: number): Promise<Child> {
+    console.log("Deleting child", id);
+    const child = await context.prisma.child.delete({ where: { id: id } })
+    console.log("Deleting child", child);
     return child;
   }
 

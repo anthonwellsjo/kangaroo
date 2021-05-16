@@ -5,9 +5,9 @@ export default class Child {
   @Field(type => ID)
   id!: number;
   @Field()
-  createdAt!: string;
+  createdAt!: Date;
   @Field()
-  updatedAt!: string;
+  updatedAt!: Date;
   @Field()
   name!: string;
   @Field()
