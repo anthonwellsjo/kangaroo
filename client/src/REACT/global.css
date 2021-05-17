@@ -3,8 +3,23 @@
 html,
 body {
   margin: 0;
-  background-color: #e5e5e5;
-  overflow-x: hidden;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+body::before {
+  content: "";
+  background-image: url("./src/images/watercolor.png");
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  opacity: 0.4;
 }
 
 a,

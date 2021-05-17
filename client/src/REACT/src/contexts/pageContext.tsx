@@ -13,7 +13,7 @@ const PageProvider: React.FC = ({ children }) => {
     showFocusOnRegisterBackdrop: false,
     refreshDashboardView: false,
     showArticleModal: false, 
-    currentArticle: undefined
+    currentArticle: undefined,
   });
   return (
     <PageContext.Provider value={[page, setPage]}>

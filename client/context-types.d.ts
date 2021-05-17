@@ -5,7 +5,7 @@ interface PageContextData {
   showFocusOnRegisterBackdrop: boolean,
   refreshDashboardView: boolean,
   showArticleModal: boolean,
-  currentArticle: Article | undefined
+  currentArticle: Article | undefined,
 }
 
 interface UserContextData {

@@ -26,7 +26,7 @@ export const CREATE_CHILD = gql`
 `;
 
 export const DELETE_CHILD = gql`
-  mutation DeleteChild($id: Int!){
+  mutation DeleteChild($id: Float!){
       removeChild(id: $id) {
         name
         id

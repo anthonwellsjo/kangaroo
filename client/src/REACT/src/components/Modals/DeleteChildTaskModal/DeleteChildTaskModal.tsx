@@ -19,9 +19,7 @@ const DeleteChildTaskModal = ({ childId, onClose }: props) => {
 
   useEffect(() => {
     console.log("removing child", childId);
-    deleteChild({ variables: { id: 100 } });
     deleteChild({ variables: { id: childId } });
-    deleteChild({ variables: { id: "100" } });
   }, [])
 
   useEffect(() => {

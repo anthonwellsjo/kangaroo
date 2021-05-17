@@ -5,8 +5,7 @@ import LoginHandler from '../LoginHandler/LoginHandler';
 
 const AuthorizationLayer: React.FC = ({ children }) => {
   const [user, setUser] = useContext(UserContext);
-  
-  
+  const [page, setPage] = useContext(UserContext);
 
   var databaseUser = firebase.auth().currentUser;
 

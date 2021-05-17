@@ -5,10 +5,10 @@ const FocusOnRegisterBackdrop = () => {
   const [page, setPage] = useContext(PageContext);
   return (
     <div
-      onClick={() => setPage(prev => ({ ...prev, showFocusOnRegisterBackdrop: false }))}
+      onClick={() => setPage(prev => ({ ...prev, showFocusOnRegisterBackdrop: false, loginAlreadyRegisteredUser: true }))}
       style={{
         position: "fixed",
-        zIndex:2,
+        zIndex: 2,
         top: 0,
         left: 0,
         backgroundColor: "rgba(255,255,255,0.9)",
