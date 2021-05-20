@@ -1,23 +1,45 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { getUsers } from '../fetchLogic/fetchLogic';
+import { getUsers } from '../api/api';
 
 export default class Users extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { users: [] };
-  }
-  async componentDidMount() {
-    getUsers().then(data=>console.log(data));
-  }
+  };
+
+
+
 
   render() {
+    if (this.props.users == null) return null;
 
     return (
-      <h1>users</h1>)
+      <>
+        <h1>Get users</h1>
+        <ul>
+          {Object.keys(this.props.users).map(k => {
+            if (this.props.users[k].children == null) {
+              return (
+                <li style={{ fontWeight: 900, fontSize: "1.3em" }} key={k}>{this.props.users[k].name}</li>
+              )
+            } else {
+              const children = Object.keys(this.props.users[k].children).map(c => this.props.users[k].children[c].name);
+              console.log("children", children)
+              return (
+                <>
+                  <li style={{ fontWeight: 900, fontSize: "1.3em" }} key={k}>{this.props.users[k].name}</li>
+                  {children.map(t => <p style={{ lineHeight: "5px", fontSize: ".8em" }} key={t}>{t}</p>)}
+                </>
+              )
+            }
+          }
+          )}
+        </ul>
+      </>
+    )
   }
 }
 
 Users.propTypes = {
-  users: PropTypes.array
+  users: PropTypes.object
 }

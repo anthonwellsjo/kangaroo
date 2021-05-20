@@ -13,7 +13,10 @@ const AlertStyles: CSS.Properties = {
   margin: "15px"
 }
 
-
+/*
+Alert handler är intrument för att kommunicera viktiga meddelanden till användaren. Detta
+görs med notiser som animeras på skärmen med hjälp av reactSpring. 
+*/
 
 
 interface alertProps {

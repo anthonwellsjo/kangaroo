@@ -15,6 +15,8 @@ import LogInContainer from './components/logInContainer/LogInContainer';
 import LoadingScreen from '../../components/LoadingScreen/LoadingScreen';
 import FadeInTransition from '../../components/Transitions/FadeIn';
 import { Article, GeneralArticlesData } from '../../../../../sanity-types';
+import { AlertContext } from '../../contexts/alertContext';
+import useCompositionColor from '../../hooks/useCompositionColor';
 
 interface LandingViewState {
   showArticleModal: boolean,
@@ -23,15 +25,25 @@ interface LandingViewState {
 
 const LandingView: React.FC = () => {
   const [state, setState] = useState<LandingViewState>({ showArticleModal: false, currentArticle: undefined });
-
+  const [alerts, setAlerts] = useContext(AlertContext);
   const { loading, error, data } = useQuery<GeneralArticlesData>(GENERAL_PREVIEW_ARTICLES);
 
 
+  useEffect(() => {
+    const alert: AlertItem = { header: "Hej Viktor", text: "Du kommer inte kunna koppla upp dig på Kangaroo på den här versionen eftersom jag nu kopplat samman med min egen server.", color: useCompositionColor("yellow") };
+    const alert2: AlertItem = { header: "Gå hit:", text: "http://localhost:1234/krav4.", color: useCompositionColor("green") };
+    setTimeout(() => {
+      setAlerts(prev => ([...prev, alert]));
+    }, 500);
 
+    setTimeout(() => {
+      setAlerts(prev => ([...prev, alert2]));
+    }, 2000);
+  }, [])
 
 
   return (
-    <>  
+    <>
       <ViewLayoutWrapper>
         <ViewColumn widthInPercent={32}>
           <Centralizer>

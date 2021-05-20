@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import LoadingScreen from '../LoadingScreen/LoadingScreen';
 import firebase from "firebase/app";
 import { useQuery } from '@apollo/client';
@@ -17,6 +17,7 @@ const LoginHandler = ({ firebaseUser }: props) => {
   const [user, setUser] = useContext(UserContext);
   const [page, setPage] = useContext(PageContext);
   const [alerts, setAlerts] = useContext(AlertContext);
+  const [errorHappened, setErrorHappened] = useState(false);
 
   console.log("anonymous user");
 
@@ -25,21 +26,25 @@ const LoginHandler = ({ firebaseUser }: props) => {
     if (data) {
       console.log("setting user", data.getUserWithEmail);
       setUser(prev => ({ ...prev, loggedInUser: data.getUserWithEmail }));
-      setPage(prev=>({...prev, user: firebaseUser}));
+      setPage(prev => ({ ...prev, user: firebaseUser }));
       const alertItem: AlertItem = { header: `Hej ${data.getUserWithEmail.name}!`, text: "Välkommen till Kangaroo! Du är inloggad och klar att börja surfa.", color: useCompositionColor("green") }
       setAlerts(prev => [...prev, alertItem]);
     }
   }, [data])
 
+  useEffect(() => {
+    if (errorHappened) {
+      const alertItem: AlertItem = { color: useCompositionColor("red"), header: "Ooops", text: "Vi kunde inte nå servern av någon anledning... Vänligen försök igen senare..." };
+      setAlerts(prev => ([...prev, alertItem]));
+    }
+  }, [errorHappened])
+
   if (loading) return <LoadingScreen />
   if (error) {
-    console.log(error.graphQLErrors);
-    return (
-      <div>
-        <h1>{error.name}</h1>
-        <h2>{error.message}</h2>
-      </div>
-    )
+    console.log("couldn't reach server", error);
+    if (!errorHappened) {
+      setErrorHappened(true);
+    }
   }
 
   return null;
