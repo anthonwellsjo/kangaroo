@@ -15,6 +15,7 @@ import DashBoardView from './src/views/DashBoardView/DashBoardView';
 import GlobalModalLayer from './src/components/GlobalModalLayer/GlobalModalLayer';
 import AuthorizationLayer from './src/components/AuthorizationLayer/AuthorizationLayer';
 import { UserContext } from './src/contexts/userContext';
+import Krav4 from './src/views/krav4/krav4.jsx';
 
 
 const domContainer = document.getElementById('root');
@@ -41,8 +42,10 @@ const App = () => {
                 <DashBoardView /> :
                 <Redirect to={`/`} />}
             </Route>
+            <Route path="/krav4/">
+              <Krav4 />
+            </Route>
           </Switch>
-
         </MainLayout>
       </GlobalModalLayer>
     </AuthorizationLayer>
