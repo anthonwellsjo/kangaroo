@@ -6,7 +6,7 @@
 - npm install
 - npm run build
 - npm start (first start is long --- up to 2 minutes so be patient and ignore errors from react-spring)
-- open http://localhost:1234/index.html in your browser
+- open http://localhost:1234/ in your browser
 - ✨Magic ✨
 
 ## Externa bibliotek
