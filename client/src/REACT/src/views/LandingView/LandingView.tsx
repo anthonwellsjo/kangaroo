@@ -31,7 +31,7 @@ const LandingView: React.FC = () => {
 
   useEffect(() => {
     const alert: AlertItem = { header: "Hej Viktor", text: "Du kommer inte kunna koppla upp dig på Kangaroo på den här versionen eftersom jag nu kopplat samman med min egen server.", color: useCompositionColor("yellow") };
-    const alert2: AlertItem = { header: "Gå hit:", text: "http://localhost:1234/krav4.", color: useCompositionColor("green") };
+    const alert2: AlertItem = { header: "Gå hit:", text: "http://localhost:1234/krav4", color: useCompositionColor("green") };
     setTimeout(() => {
       setAlerts(prev => ([...prev, alert]));
     }, 500);

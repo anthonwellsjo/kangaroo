@@ -39,7 +39,7 @@ const LoginHandler = ({ firebaseUser }: props) => {
     }
   }, [errorHappened])
 
-  if (loading) return <LoadingScreen />
+  if (loading) return null;
   if (error) {
     console.log("couldn't reach server", error);
     if (!errorHappened) {

@@ -16,6 +16,9 @@ import GlobalModalLayer from './src/components/GlobalModalLayer/GlobalModalLayer
 import AuthorizationLayer from './src/components/AuthorizationLayer/AuthorizationLayer';
 import { UserContext } from './src/contexts/userContext';
 import Krav4 from './src/views/krav4/krav4.jsx';
+import { AlertContext } from './src/contexts/alertContext';
+import useCompositionColor from './src/hooks/useCompositionColor';
+import ErrorBoundary from './src/components/ErrorBoundary/ErrorBoundary.jsx';
 
 
 const domContainer = document.getElementById('root');
@@ -23,8 +26,23 @@ const domContainer = document.getElementById('root');
 const App = () => {
   const [page, setPage] = useContext(PageContext);
   const [user, setUser] = useContext(UserContext);
+  const [alert, setAlerts] = useContext(AlertContext);
 
+  useEffect(() => {
+    const i1: AlertItem = { header: "Hej Viktor", text: "Det här är min återanvändbara komponents", color: useCompositionColor("green") }
+    const i2: AlertItem = { header: "Hur fungerar den?", text: "Den heter alert handler och är dokumenterad inuti komponenten.", color: useCompositionColor("orange") }
+    const i3: AlertItem = { header: "Fel med servern?", text: "Den gör inget. Det är därför att jag ersatt firebase med min egen server i prototypen.", color: useCompositionColor("red") }
 
+    setTimeout(() => {
+      setAlerts(prev => ([...prev, i1]));
+    }, 10000);
+    setTimeout(() => {
+      setAlerts(prev => ([...prev, i2]));
+    }, 12000);
+    setTimeout(() => {
+      setAlerts(prev => ([...prev, i3]));
+    }, 14000);
+  }, [])
 
   return (
     <AuthorizationLayer>
@@ -43,7 +61,9 @@ const App = () => {
                 <Redirect to={`/`} />}
             </Route>
             <Route path="/krav4/">
-              <Krav4 />
+              <ErrorBoundary>
+                <Krav4 />
+              </ErrorBoundary>
             </Route>
           </Switch>
         </MainLayout>

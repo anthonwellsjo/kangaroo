@@ -1,37 +1,35 @@
 import React from 'react';
+import ViewLayoutWrapper from '../Layout/ViewLayout/ViewLayoutWrapper';
 
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { error: null, errorInfo: null };
   }
-  
+
   componentDidCatch(error, errorInfo) {
-    // Catch errors in any components below and re-render with error message
     this.setState({
       error: error,
       errorInfo: errorInfo
     })
-    // You can also log error messages to an error reporting service here
+    console.log("Error!", error, errorInfo);
   }
-  
+
   render() {
     if (this.state.errorInfo) {
       // Error path
       return (
-        <div>
-          <h2>Något blev fel...</h2>
-          <details style={{ whiteSpace: 'pre-wrap' }}>
-            {this.state.error && this.state.error.toString()}
-            <br />
-            {this.state.errorInfo.componentStack}
-          </details>
-        </div>
+        <ViewLayoutWrapper>
+          <div style={{display: "flex", flexDirection: "column", alignItems: "center", width: "100%"}}>
+            <h2>Något blev fel...</h2>
+            <p>Gå tillbaks till <a href="/krav4">startsidan</a>?</p>
+          </div>
+        </ViewLayoutWrapper>
       );
     }
     // Normally, just render children
     return this.props.children;
-  }  
+  }
 }
 
 export default ErrorBoundary;

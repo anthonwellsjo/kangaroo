@@ -7,13 +7,16 @@ import CreateUser from './components/createUser';
 import CreateChild from './components/createChild';
 import LoadingScreen from '../../components/LoadingScreen/LoadingScreen';
 import DeleteUser from './components/deleteUser';
+import { isJsxSpreadAttribute } from 'typescript';
 
 
 export default class Krav4 extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { users: null, gotTheStuff: false };
+    this.state = { users: null, gotTheStuff: false, createError: false };
   }
+
+  obj = {};
 
   componentDidMount() {
     getUsers
@@ -31,6 +34,10 @@ export default class Krav4 extends React.Component {
     location.reload();
   }
 
+  createError = () => {
+    this.state.createError = true;
+  }
+
   render() {
 
     if (!this.state.gotTheStuff) return <LoadingScreen />
@@ -38,6 +45,8 @@ export default class Krav4 extends React.Component {
       <>
         <div style={{ display: "flex", justifyContent: "center" }}>
           <p>Följande komponenter ämnar att uppfylla krav nummer 4, 7 och 8.</p>
+          <hr></hr>
+          <button style={{ border: "1px solid black", backgroundColor: "red" }} className="button" onClick={this.createError}>Skapa ett fel för att testa errorboundary</button>
         </div>
         <ViewLayoutWrapper>
           <ViewColumn widthInPercent={25} >
@@ -56,6 +65,7 @@ export default class Krav4 extends React.Component {
               <DeleteUser updateApi={this.somethingUpdated} users={this.state.users} />
             }
           </ViewColumn>
+          {this.state.createError && this.obj.map(o => o)}
         </ViewLayoutWrapper>
       </>
     )
